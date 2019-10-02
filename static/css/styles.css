@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700|Slabo+27px&display=swap');
+
+.bg {
+    font-family: 'Slabo 27px', serif;
+}
+
+.main-text {
+    font-family: 'Roboto', sans-serif;
+}
