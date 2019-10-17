@@ -4,8 +4,14 @@
         <div class="jumbotron text-center">
             <h1 class="slabo-text">Combat</h1>
             <hr class="bar-thin"></hr>
-            <h3 class="main-text">Test</h3>
+            <a href="{% url 'add_enemy' %}" role="button" class="btn btn-outline-warning" aria-disabled="false">Add Enemy</a>
         </div>
     </div>
 </div>
+
+{% for e in enemies %}
+<h3>{{ e.name }}</h3>
+<h3>{{ e.hp }}</h3>
+<h3>{{ e.initiative }}</h3>
+{% endfor %}
 {% endblock %}
