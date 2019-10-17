@@ -3,7 +3,9 @@ from .views import *
 
 urlpatterns = [
     path(r'', members, name="members"),
+    path('monsters/', monsters, name="monsters"),
     path('add_player/', add_player, name="add_player"),
     path('add_enemy/', add_enemy, name="add_enemy"),
     path(r'delete_player/(?P<id>\d+)', delete_player, name="delete_player"),
+    path(r'delete_monster/(?P<id>\d+)', delete_monster, name="delete_monster"),
 ]

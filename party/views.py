@@ -5,7 +5,8 @@ from .forms import *
 # Create your views here.
 
 def members(request):
-    players = Base.objects.order_by('name')
+    heroes = Base.objects.order_by('name')
+    players = heroes.filter(enemy=False)
     return render(request, 'members.html', {"players": players})
     
 def add_player(request):
@@ -17,6 +18,11 @@ def add_player(request):
     else:
         player_form = PlayerForm()
     return render(request, 'add_player.html', {'player_form': player_form})
+
+def monsters(request):
+    enemies = Base.objects.order_by('name')
+    monsters = enemies.filter(enemy=True)
+    return render(request, 'monsters.html', {"monsters": monsters})
     
 def add_enemy(request):
     if request.method == "POST":
@@ -34,4 +40,9 @@ def delete_player(request, id):
     instance = Base.objects.get(id=id)
     instance.delete()
     return redirect(reverse('members'))
+    
+def delete_monster(request, id):
+    instance = Base.objects.get(id=id)
+    instance.delete()
+    return redirect(reverse('monsters'))
     

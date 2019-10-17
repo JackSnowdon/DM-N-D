@@ -1,0 +1,35 @@
+{% extends 'base.html' %} {% block page_title %} Monster Home {% endblock %} {% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="jumbotron text-center">
+            <h1 class="slabo-text">Monsters</h1>
+            <hr class="bar-thin"></hr>
+            <a href="{% url 'add_enemy' %}" role="button" class="btn btn-outline-warning" aria-disabled="false">Add Monster</a>
+        </div>
+    </div>
+</div>
+
+<div class="card-deck text-center">
+    {% for m in monsters %}
+    <div class="col-12 col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ m.name }}</h5>
+                <p class="card-text">HP: {{ m.hp }}</p>
+            </div>
+            <div class="card-footer">
+                <form class="" method="post" action="{% url 'delete_monster' m.id %}">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                    <button class="btn btn-warning" type="submit">Delete</button>
+                </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br> {% endfor %}
+</div>
+<br>
+{% endblock %}
