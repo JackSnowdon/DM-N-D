@@ -4,8 +4,15 @@
         <div class="jumbotron text-center">
             <h1 class="slabo-text">Party</h1>
             <hr class="bar-thin"></hr>
-            <h3 class="main-text">Test</h3>
+            <a href="{% url 'add_player' %}" role="button" class="btn btn-outline-warning" aria-disabled="false">Add Player</a>
         </div>
+    </div>
+    
+    <div class="col-12">
+        {% for p in players %}
+        <h3>{{ p.name }}</h3>
+        <h4>{{ p.hp }}</h4>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}
