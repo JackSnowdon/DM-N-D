@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from .models import * 
 from .forms import *
 
@@ -16,6 +16,10 @@ def add_player(request):
             return redirect('members')
     else:
         player_form = PlayerForm()
-        
-        
     return render(request, 'add_player.html', {'player_form': player_form})
+    
+def delete_player(request, id):
+    instance = Player.objects.get(id=id)
+    instance.delete()
+    return redirect(reverse('members'))
+    

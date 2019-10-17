@@ -4,10 +4,10 @@
 
 .bg {
     background-color: #8DE8C3;
-    height: 100vh;
+    height: 100%;
 }
 
-/* Text-Helpers */
+/* Text Helpers */
 
 .main-text {
     font-family: 'Roboto', sans-serif;
@@ -16,6 +16,14 @@
 .slabo-text {
     font-family: 'Slabo 27px', serif;
 }
+
+/* Form Helpers */
+
+.input-group {
+    display: inline-block;
+}
+
+/* Party */
 
 
 /* Breaks */
