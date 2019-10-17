@@ -5,5 +5,11 @@ from .models import *
 class PlayerForm(forms.ModelForm):
 
     class Meta:
-        model = Player
-        fields = '__all__'
+        model = Base
+        exclude = ['enemy']
+        
+class EnemyForm(forms.ModelForm):
+
+    class Meta:
+        model = Base
+        exclude = ['enemy']
