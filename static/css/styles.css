@@ -1,9 +1,28 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700|Slabo+27px&display=swap');
 
+/* Background */
+
 .bg {
-    font-family: 'Slabo 27px', serif;
+    background-color: #8DE8C3;
+    height: 100vh;
 }
+
+/* Text-Helpers */
 
 .main-text {
     font-family: 'Roboto', sans-serif;
+}
+
+.slabo-text {
+    font-family: 'Slabo 27px', serif;
+}
+
+
+/* Breaks */
+
+.bar-thin {
+    width: 25rem;
+    height: 1.5px;
+    border: 0;
+    background-color: #ffffff;
 }
