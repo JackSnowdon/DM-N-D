@@ -11,20 +11,16 @@
 <div class="combat-flow">
     <div class="row text-center">
         <div class="col-6">
-            <a href="#" role="button" class="btn btn-warning" aria-disabled="false">Add player</a>
+            <a href="#" role="button" class="btn btn-warning" aria-disabled="false">Add Player</a>
         </div>
         <div class="col-6">
-            <a href="{% url 'add_enemy' %}" role="button" class="btn btn-warning" aria-disabled="false">Add Enemy</a>
+            <a href="#" role="button" class="btn btn-warning" aria-disabled="false">Add Enemy</a>
         </div>
     </div>
     <div class="row">
         <div class="col-12">
-            {% for e in enemies %}
-            <h3>{{ e.name }}</h3>
-            <h3>{{ e.hp }}</h3>
-            <h3>{{ e.initiative }}</h3>
+
         </div>
-        {% endfor %}
     </div>
 </div>
 

@@ -5,7 +5,14 @@ from django.db import models
 class Base(models.Model):
     name = models.CharField(max_length=100)
     hp = models.IntegerField()
-    enemy = models.BooleanField(default=False)
+    
+    
+    def __str__(self):
+        return self.name
+        
+class EnemyBase(models.Model):
+    name = models.CharField(max_length=100)
+    hp = models.IntegerField()
     
     
     def __str__(self):

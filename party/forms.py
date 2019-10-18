@@ -11,5 +11,5 @@ class PlayerForm(forms.ModelForm):
 class EnemyForm(forms.ModelForm):
 
     class Meta:
-        model = Base
+        model = EnemyBase
         exclude = ['enemy']
