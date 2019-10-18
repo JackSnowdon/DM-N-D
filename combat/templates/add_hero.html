@@ -1,0 +1,12 @@
+{% extends 'base.html' %}  {% block page_title %} Add Hero {% endblock %} {% block content %}
+
+<h2>New Hero</h2>
+<form role="form" method="post" id="add-hero-form" action="{% url 'add_hero' %}">
+    <div class="form-group">
+        {{ hero_form.as_p }}
+        {% csrf_token %}
+        <input class="btn btn-success" id="submit_hero" name="commit" type="submit" value="Add Hero">
+    </div>
+</form>
+
+{% endblock %}

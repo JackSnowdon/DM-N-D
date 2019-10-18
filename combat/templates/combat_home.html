@@ -11,18 +11,31 @@
 <div class="combat-flow">
     <div class="row text-center">
         <div class="col-6">
-            <a href="#" role="button" class="btn btn-warning" aria-disabled="false">Add Player</a>
+            <a href="{% url 'add_hero' %}" role="button" class="btn btn-warning" aria-disabled="false">Add Player</a>
         </div>
         <div class="col-6">
-            <a href="#" role="button" class="btn btn-warning" aria-disabled="false">Add Enemy</a>
+            <a href="{% url 'add_monster' %}" role="button" class="btn btn-warning" aria-disabled="false">Add Monster</a>
         </div>
     </div>
-    <div class="row">
-        <div class="col-12">
-
+    <br>
+    <div class="row text-center">
+        <div class="col-6">
+            {% for p in party %}
+            <h5 class="card-title">{{ p.player.name }}</h5>
+            <p class="card-text">HP: {{ p.player.hp }}</p>
+            <p class="card-text">Init: {{ p.initiative }}</p>
+            {% endfor %}
+        </div>
+        <div class="col-6">
+            {% for e in enemy %}
+            <h5 class="card-title">{{ e.monster.name }}</h5>
+            <p class="card-text">HP: {{ e.monster.hp }}</p>
+            <p class="card-text">Init: {{ e.initiative }}</p>
+            {% endfor %}
         </div>
     </div>
 </div>
+<br>
 
 <div class="row">
     <div class="col-12">

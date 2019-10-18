@@ -1,6 +1,6 @@
 {% extends 'base.html' %}  {% block page_title %} Add Enemy {% endblock %} {% block content %}
 
-<h2>New Player</h2>
+<h2>New Enemy</h2>
 <form role="form" method="post" id="add-player-form" action="{% url 'add_enemy' %}">
     <div class="form-group">
         {{ enemy_form.as_p }}
