@@ -15,7 +15,7 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">{{ p.name }}</h5>
-                <p class="card-text">HP: {{ p.hp }}</p>
+                <p class="card-text">HP: {{ p.max_hp }}</p>
             </div>
             <div class="card-footer">
                 <form class="" method="post" action="{% url 'delete_player' p.id %}">

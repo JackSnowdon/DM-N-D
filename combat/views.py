@@ -1,13 +1,17 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
+from itertools import chain
 from .models import * 
 from .forms import *
 
 # Create your views here.
 
+
+
 def combat_home(request):
     party = Player.objects.order_by('-initiative')
     enemy = Monster.objects.order_by('-initiative')
-    return render(request, 'combat_home.html', {"party": party, "enemy": enemy})
+    matches = list(chain(party, enemy))
+    return render(request, 'combat_home.html', {"party": party, "enemy": enemy, "matches": matches})
     
 def add_hero(request):
     if request.method == "POST":
@@ -28,4 +32,11 @@ def add_monster(request):
     else:
         monster_form = AddMonsterForm()
     return render(request, 'add_monster.html', {'monster_form': monster_form})
+    
+def delete_hero_combat(request, id):
+    
+    hero = Player.objects.get(id=id)
+    instance = hero.objects.get(id=id)
+    instance.delete()
+    return redirect(reverse('combat_home'))
     

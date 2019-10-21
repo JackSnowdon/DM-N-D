@@ -4,7 +4,7 @@ from django.db import models
 
 class Base(models.Model):
     name = models.CharField(max_length=100)
-    hp = models.IntegerField()
+    max_hp = models.IntegerField()
     
     
     def __str__(self):
@@ -12,7 +12,7 @@ class Base(models.Model):
         
 class EnemyBase(models.Model):
     name = models.CharField(max_length=100)
-    hp = models.IntegerField()
+    max_hp = models.IntegerField()
     
     
     def __str__(self):
