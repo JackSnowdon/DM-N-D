@@ -32,13 +32,13 @@ def add_enemy(request):
         enemy_form = EnemyForm()
     return render(request, 'add_enemy.html', {'enemy_form': enemy_form})
     
-def delete_player(request, id):
-    instance = Base.objects.get(id=id)
+def delete_player(request, pk=id):
+    instance = Base.objects.get(id=pk)
     instance.delete()
     return redirect(reverse('members'))
     
-def delete_monster(request, id):
-    instance = EnemyBase.objects.get(id=id)
+def delete_monster(request, pk=id):
+    instance = EnemyBase.objects.get(id=pk)
     instance.delete()
     return redirect(reverse('monsters'))
     

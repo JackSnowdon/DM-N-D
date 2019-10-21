@@ -24,6 +24,14 @@
             <h5 class="card-title">{{ p.player.name }}</h5>
             <p class="card-text">Max HP: {{ p.player.max_hp }}</p>
             <p class="card-text">Init: {{ p.initiative }}</p>
+            <form class="" method="post" action="{% url 'delete_hero_int' p.player.id %}">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button class="btn btn-warning" type="submit">Delete</button>
+                        </span>
+                    </div>
+                </form>
             {% endfor %}
         </div>
         <div class="col-6">
@@ -31,6 +39,13 @@
             <h5 class="card-title">{{ e.monster.name }}</h5>
             <p class="card-text">Max HP: {{ e.monster.max_hp }}</p>
             <p class="card-text">Init: {{ e.initiative }}</p>
+            <form class="" method="post" action="{% url 'delete_monster_int' e.monster.id %}">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button class="btn btn-warning" type="submit">Delete</button>
+                        </span>
+                    </div>
             {% endfor %}
         </div>
     </div>
@@ -42,10 +57,26 @@
                 <h5 class="card-title">{{ m.player.name }}</h5>
                 <p class="card-text">Init: {{ m.initiative }}</p>
                 <p class="card-text">Max HP: {{ m.player.max_hp }}</p>
+                <form class="" method="post" action="{% url 'delete_hero_combat' m.player.id %}">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button class="btn btn-warning" type="submit">Delete</button>
+                        </span>
+                    </div>
+                </form>
             {% else %}
                 <h5 class="card-title">{{ m.monster.name }}</h5>
                 <p class="card-text">Init: {{ m.initiative }}</p>
                 <p class="card-text">Max HP: {{ m.monster.max_hp }}</p>
+                <form class="" method="post" action="{% url 'delete_hero_combat' m.monster.id %}">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button class="btn btn-warning" type="submit">Delete</button>
+                        </span>
+                    </div>
+                </form>
             {% endif %}
         {% endfor %}
     </div>

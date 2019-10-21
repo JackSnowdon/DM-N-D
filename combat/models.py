@@ -21,7 +21,6 @@ class Monster(models.Model):
         on_delete=models.CASCADE,
         primary_key=True,
     )
-    
     initiative = models.IntegerField(max_length=2)
     current_hp = models.IntegerField(max_length=4)
     

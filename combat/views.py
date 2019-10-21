@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse
 from itertools import chain
 from .models import * 
 from .forms import *
+from party.models import * 
 
 # Create your views here.
 
@@ -33,10 +34,23 @@ def add_monster(request):
         monster_form = AddMonsterForm()
     return render(request, 'add_monster.html', {'monster_form': monster_form})
     
-def delete_hero_combat(request, id):
-    
-    hero = Player.objects.get(id=id)
-    instance = hero.objects.get(id=id)
+def delete_hero_int(request, pk=id):
+    instance = Player.objects.get(player_id=pk)
     instance.delete()
+    return redirect(reverse('combat_home'))
+    
+def delete_monster_int(request, pk=id):
+    instance = Monster.objects.get(monster_id=pk)
+    instance.delete()
+    return redirect(reverse('combat_home'))
+    
+def delete_hero_combat(request, pk=id):
+    print(pk)
+    players = Base.objects.all()
+    monsters = EnemyBase.objects.all()
+    matches = list(chain(players, monsters))
+    for m in matches:
+        obj=m.id
+        matches.remove()
     return redirect(reverse('combat_home'))
     
