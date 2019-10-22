@@ -3,6 +3,7 @@ from itertools import chain
 from .models import * 
 from .forms import *
 from party.models import * 
+from operator import itemgetter
 
 # Create your views here.
 
@@ -12,6 +13,7 @@ def combat_home(request):
     party = Player.objects.order_by('-initiative')
     enemy = Monster.objects.order_by('-initiative')
     matches = list(chain(party, enemy))
+        
     return render(request, 'combat_home.html', {"party": party, "enemy": enemy, "matches": matches})
     
 def add_hero(request):
