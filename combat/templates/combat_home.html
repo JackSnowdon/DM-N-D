@@ -3,85 +3,102 @@
     <div class="col-12">
         <div class="jumbotron text-center">
             <h1 class="slabo-text">Combat</h1>
-            <hr class="bar-thin"></hr>
+            <hr class="bar-thin">
             <h3>Add combatants below and tap Start Combat to begin the fight</h3>
         </div>
     </div>
 </div>
-<div class="combat-flow">
-    <div class="row text-center">
-        <div class="col-6">
-            <a href="{% url 'add_hero' %}" role="button" class="btn btn-warning" aria-disabled="false">Add Player</a>
-        </div>
-        <div class="col-6">
-            <a href="{% url 'add_monster' %}" role="button" class="btn btn-warning" aria-disabled="false">Add Monster</a>
-        </div>
+<div class="row text-center">
+    <div class="col-6">
+        <a href="{% url 'add_hero' %}" role="button" class="btn btn-warning" aria-disabled="false">Add Player</a>
     </div>
-    <br>
-    <div class="row text-center">
-        <div class="col-6">
-            {% for p in party %}
-            <h5 class="card-title">{{ p.player.name }}</h5>
-            <p class="card-text">Max HP: {{ p.player.max_hp }}</p>
-            <p class="card-text">Init: {{ p.initiative }}</p>
-            <form class="" method="post" action="{% url 'delete_hero_int' p.player.id %}">
-                    {% csrf_token %}
-                    <div class="input-group">
-                        <span class="input-group-btn">
-                            <button class="btn btn-warning" type="submit">Delete</button>
-                        </span>
-                    </div>
-                </form>
-            {% endfor %}
-        </div>
-        <div class="col-6">
-            {% for e in enemy %}
-            <h5 class="card-title">{{ e.monster.name }}</h5>
-            <p class="card-text">Max HP: {{ e.monster.max_hp }}</p>
-            <p class="card-text">Init: {{ e.initiative }}</p>
-            <form class="" method="post" action="{% url 'delete_monster_int' e.monster.id %}">
-                    {% csrf_token %}
-                    <div class="input-group">
-                        <span class="input-group-btn">
-                            <button class="btn btn-warning" type="submit">Delete</button>
-                        </span>
-                    </div>
-            {% endfor %}
-        </div>
-    </div>
-    <hr class="bar-thin">
-    <div class="col-12 text-center">
-        <h3>Combat Order:</h3>
-        {% for m in matches %} 
-            {% if m in party %}
-                <h5 class="card-title">{{ m.player.name }}</h5>
-                <p class="card-text">Init: {{ m.initiative }}</p>
-                <p class="card-text">Max HP: {{ m.player.max_hp }}</p>
-                <form class="" method="post" action="{% url 'delete_hero_combat' m.player.id %}">
-                    {% csrf_token %}
-                    <div class="input-group">
-                        <span class="input-group-btn">
-                            <button class="btn btn-warning" type="submit">Delete</button>
-                        </span>
-                    </div>
-                </form>
-            {% else %}
-                <h5 class="card-title">{{ m.monster.name }}</h5>
-                <p class="card-text">Init: {{ m.initiative }}</p>
-                <p class="card-text">Max HP: {{ m.monster.max_hp }}</p>
-                <form class="" method="post" action="{% url 'delete_hero_combat' m.monster.id %}">
-                    {% csrf_token %}
-                    <div class="input-group">
-                        <span class="input-group-btn">
-                            <button class="btn btn-warning" type="submit">Delete</button>
-                        </span>
-                    </div>
-                </form>
-            {% endif %}
-        {% endfor %}
+    <div class="col-6">
+        <a href="{% url 'add_monster' %}" role="button" class="btn btn-warning" aria-disabled="false">Add Monster</a>
     </div>
 </div>
 <br>
+<div class="row text-center">
+    <div class="col-6">
+        {% for p in party %}
+        <h5 class="card-title">{{ p.player.name }}</h5>
+        <p>Current HP: {{ p.current_hp }}</p>
+        <p class="card-text">Max HP: {{ p.player.max_hp }}</p>
+        <p class="card-text">Init: {{ p.initiative }}</p>
+        <form class="" method="post" action="{% url 'delete_hero_int' p.player.id %}">
+            {% csrf_token %}
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button class="btn btn-warning" type="submit">Delete</button>
+                </span>
+            </div>
+        </form>
+        {% endfor %}
+    </div>
+    <div class="col-6">
+        {% for e in enemy %}
+        <h5 class="card-title">{{ e.monster.name }}</h5>
+        <p>Current HP: {{ e.current_hp }}</p>
+        <p class="card-text">Max HP: {{ e.monster.max_hp }}</p>
+        <p class="card-text">Init: {{ e.initiative }}</p>
+        <form class="" method="post" action="{% url 'delete_monster_int' e.monster.id %}">
+            {% csrf_token %}
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button class="btn btn-warning" type="submit">Delete</button>
+                </span>
+            </div>
+        </form>
+        {% endfor %}
+    </div>
+</div>
+<hr class="bar-thin">
+<div class="col-12 text-center">
+    <h3>Combat Order:</h3>
+    {% for m in matches %} 
+    <div class="combat-box text-center">
+        {% if m in party %}
+        <h5>{{ m.player.name }}</h5>
+        <p>Init: {{ m.initiative }}</p>
+        <p>Max HP: {{ m.player.max_hp }}</p>
+        <p>Current HP: {{ m.current_hp }}</p>
+        <div class="row">
+            <div class="col-6">
+                <form class="" method="post" action="{% url 'delete_hero_int' m.player.id %}">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button class="btn btn-warning" type="submit">Delete</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+            <div class="col-6">
+                <a href="{% url 'edit_hero' m.player.id  %}" role="button" class="btn btn-warning" aria-disabled="false">Edit Hero</a>
+            </div>
+        </div>
+        {% else %}
+        <h5>{{ m.monster.name }}</h5>
+        <p>Init: {{ m.initiative }}</p>
+        <p>Max HP: {{ m.monster.max_hp }}</p>
+        <p>Current HP: {{ m.current_hp }}</p>
+        <div class="row">
+            <div class="col-6">
+                <form class="" method="post" action="{% url 'delete_monster_int' m.monster.id %}">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button class="btn btn-warning" type="submit">Delete</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+            <div class="col-6">
+                <a href="{% url 'edit_monster' m.monster.id  %}" role="button" class="btn btn-warning" aria-disabled="false">Edit Monster</a> {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
 
 <div class="row">
     <div class="col-12">
