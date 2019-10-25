@@ -14,32 +14,37 @@
     </div>
 </div>
 <br>
-<div class="row text-center">
-    <div class="col-12">
-        {% for p in party %}
-        <div class="combat-box">
-            <h3 class="card-title boldest">{{ p.hero.name }}</h3>
-            <p><span class="boldest">Current HP:</span> {{ p.current_hp }}</p>
-            <p class="card-text"><span class="boldest">Max HP:</span> {{ p.hero.max_hp }}</p>
-            <p class="card-text"><span class="boldest">Init:</span> {{ p.initiative }}</p>
-            <div class="row">
-                <div class="col-6">
-                    <form class="" method="post" action="{% url 'delete_hero_int' p.hero.id %}">
-                        {% csrf_token %}
-                        <div class="input-group">
-                            <span class="input-group-btn">
-                    <button class="btn btn-warning" type="submit">Delete</button>
-                </span>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-6">
-                    <a href="{% url 'edit_hero' p.hero.id  %}" role="button" class="btn btn-warning" aria-disabled="false">Edit Hero</a>
+<div class="card-deck text-center">
+    {% for p in party %}
+    <div class="col-12 col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title boldest">{{ p.hero.name }}</h3>
+                <p><span class="boldest">Current HP:</span> {{ p.current_hp }}</p>
+                <p class="card-text"><span class="boldest">Max HP:</span> {{ p.hero.max_hp }}</p>
+                <p class="card-text"><span class="boldest">Init:</span> {{ p.initiative }}</p>
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-6">
+                        <form class="" method="post" action="{% url 'delete_hero_int' p.hero.id %}">
+                            {% csrf_token %}
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-warning" type="submit">Delete</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-6">
+                        <a href="{% url 'edit_hero' p.hero.id  %}" role="button" class="btn btn-warning" aria-disabled="false">Edit Stats</a>
+                    </div>
                 </div>
             </div>
         </div>
-        <br> {% endfor %}
     </div>
+</div>
+<br> {% endfor %}
 </div>
 <hr class="bar-thin">
 <div class="col-12">

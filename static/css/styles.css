@@ -7,7 +7,28 @@
     height: 100%;
 }
 
+
+/* NavBar */
+
+.navbar li a {
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    -webkit-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out;
+
+}
+
+.navbar li a:hover {
+    color: #fafafa;
+}
+
+
 /* Text Helpers */
+
 
 .main-text {
     font-family: 'Roboto', sans-serif;
@@ -17,15 +38,33 @@
     font-family: 'Slabo 27px', serif;
 }
 
+
 /* Form Helpers */
+
 
 .input-group {
     display: inline-block;
 }
 
+
 /* Party */
 
+
+
 /* Combat */
+
+.btn-warning {
+    transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+}
+
+.btn-warning:hover {
+    background-color: #25da46;
+    border-color: black;
+}
+
 
 .combat-box {
     width: 375px;
@@ -39,6 +78,7 @@
 
 
 /* Breaks */
+
 
 .bar-thin {
     width: 25rem;

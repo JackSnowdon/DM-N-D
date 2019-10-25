@@ -4,7 +4,7 @@
         <div class="jumbotron text-center">
             <h1 class="slabo-text">Party</h1>
             <hr class="bar-thin"></hr>
-            <a href="{% url 'add_player' %}" role="button" class="btn btn-outline-warning" aria-disabled="false">Add Player</a>
+            <a href="{% url 'add_player' %}" role="button" class="btn btn-warning" aria-disabled="false">Add Player</a>
         </div>
     </div>
 </div>
@@ -14,8 +14,8 @@
     <div class="col-12 col-md-4">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">{{ p.name }}</h5>
-                <p class="card-text">HP: {{ p.max_hp }}</p>
+                <h3 class="card-title boldest">{{ p.name }}</h3>
+                <p class="card-text"><span class="boldest">Max HP: </span>{{ p.max_hp }}</p>
             </div>
             <div class="card-footer">
                 <div class="row">
@@ -32,9 +32,12 @@
                     <div class="col-6">
                         <a href="{% url 'edit_player' p.id  %}" role="button" class="btn btn-warning" aria-disabled="false">Edit Hero</a>
                     </div>
-
                 </div>
             </div>
-            <br> {% endfor %}
         </div>
-        <br> {% endblock %}
+    </div>
+    {% endfor %}
+    <br> 
+</div>
+<br>
+    {% endblock %}
