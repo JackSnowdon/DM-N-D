@@ -9,24 +9,21 @@
     </div>
 </div>
 <div class="row text-center">
-    <div class="col-6">
+    <div class="col-12">
         <a href="{% url 'add_hero' %}" role="button" class="btn btn-warning" aria-disabled="false">Add Player</a>
-    </div>
-    <div class="col-6">
-        <a href="{% url 'add_monster' %}" role="button" class="btn btn-warning" aria-disabled="false">Add Monster</a>
     </div>
 </div>
 <br>
 <div class="row text-center">
-    <div class="col-6">
+    <div class="col-12">
         {% for p in party %}
-        <h5 class="card-title">{{ p.player.name }}</h5>
+        <h5 class="card-title">{{ p.hero.name }}</h5>
         <p>Current HP: {{ p.current_hp }}</p>
-        <p class="card-text">Max HP: {{ p.player.max_hp }}</p>
+        <p class="card-text">Max HP: {{ p.hero.max_hp }}</p>
         <p class="card-text">Init: {{ p.initiative }}</p>
         <div class="row">
             <div class="col-6">
-                <form class="" method="post" action="{% url 'delete_hero_int' p.player.id %}">
+                <form class="" method="post" action="{% url 'delete_hero_int' p.hero.id %}">
                     {% csrf_token %}
                     <div class="input-group">
                         <span class="input-group-btn">
@@ -36,30 +33,7 @@
                 </form>
             </div>
             <div class="col-6">
-                <a href="{% url 'edit_hero' p.player.id  %}" role="button" class="btn btn-warning" aria-disabled="false">Edit Hero</a>
-            </div>
-        </div>
-        <br> {% endfor %}
-    </div>
-    <div class="col-6">
-        {% for e in enemy %}
-        <h5 class="card-title">{{ e.monster.name }}</h5>
-        <p>Current HP: {{ e.current_hp }}</p>
-        <p class="card-text">Max HP: {{ e.monster.max_hp }}</p>
-        <p class="card-text">Init: {{ e.initiative }}</p>
-        <div class="row">
-            <div class="col-6">
-                <form class="" method="post" action="{% url 'delete_monster_int' e.monster.id %}">
-                    {% csrf_token %}
-                    <div class="input-group">
-                        <span class="input-group-btn">
-                    <button class="btn btn-warning" type="submit">Delete</button>
-                </span>
-                    </div>
-                </form>
-            </div>
-            <div class="col-6">
-                <a href="{% url 'edit_monster' e.monster.id  %}" role="button" class="btn btn-warning" aria-disabled="false">Edit Monster</a>
+                <a href="{% url 'edit_hero' p.hero.id  %}" role="button" class="btn btn-warning" aria-disabled="false">Edit Hero</a>
             </div>
         </div>
         <br> {% endfor %}
@@ -68,7 +42,7 @@
 <hr class="bar-thin">
 <div class="col-12">
     <div class="text-center">
-        <button type="button" class="btn btn-success">Start Combat</button>
+        <a href="#" role="button" class="btn btn-warning" aria-disabled="false">Start Combat</a>
     </div>
 </div>
 <br>

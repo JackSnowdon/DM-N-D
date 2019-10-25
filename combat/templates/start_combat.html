@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% load static from staticfiles %} {% block page_title %} Start Combat {% endblock %} {% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="jumbotron text-center">
+            <h1 class="slabo-text">Start Combat</h1>
+            <hr class="bar-thin">
+            <h3>Game Flow!</h3>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %} {% block script_js %}
+<script type="text/javascript" src="{% static 'js/combat.js' %}"></script>
+{% endblock %}

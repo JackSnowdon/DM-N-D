@@ -6,10 +6,10 @@ class PlayerForm(forms.ModelForm):
 
     class Meta:
         model = Base
-        exclude = ['enemy']
+        exclude = ['alignment']
         
 class EnemyForm(forms.ModelForm):
 
     class Meta:
-        model = EnemyBase
-        exclude = ['enemy']
+        model = Base
+        exclude = ['alignment']

@@ -2,14 +2,9 @@ from django import forms
 
 from .models import *
 
-class AddPlayerForm(forms.ModelForm):
+class AddToCombat(forms.ModelForm):
 
     class Meta:
-        model = Player
+        model = CombatMember
         fields = '__all__'
         
-class AddMonsterForm(forms.ModelForm):
-
-    class Meta:
-        model = Monster
-        exclude = '__all__'
