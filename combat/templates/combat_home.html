@@ -17,23 +17,25 @@
 <div class="row text-center">
     <div class="col-12">
         {% for p in party %}
-        <h5 class="card-title">{{ p.hero.name }}</h5>
-        <p>Current HP: {{ p.current_hp }}</p>
-        <p class="card-text">Max HP: {{ p.hero.max_hp }}</p>
-        <p class="card-text">Init: {{ p.initiative }}</p>
-        <div class="row">
-            <div class="col-6">
-                <form class="" method="post" action="{% url 'delete_hero_int' p.hero.id %}">
-                    {% csrf_token %}
-                    <div class="input-group">
-                        <span class="input-group-btn">
+        <div class="combat-box">
+            <h3 class="card-title boldest">{{ p.hero.name }}</h3>
+            <p><span class="boldest">Current HP:</span> {{ p.current_hp }}</p>
+            <p class="card-text"><span class="boldest">Max HP:</span> {{ p.hero.max_hp }}</p>
+            <p class="card-text"><span class="boldest">Init:</span> {{ p.initiative }}</p>
+            <div class="row">
+                <div class="col-6">
+                    <form class="" method="post" action="{% url 'delete_hero_int' p.hero.id %}">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <span class="input-group-btn">
                     <button class="btn btn-warning" type="submit">Delete</button>
                 </span>
-                    </div>
-                </form>
-            </div>
-            <div class="col-6">
-                <a href="{% url 'edit_hero' p.hero.id  %}" role="button" class="btn btn-warning" aria-disabled="false">Edit Hero</a>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-6">
+                    <a href="{% url 'edit_hero' p.hero.id  %}" role="button" class="btn btn-warning" aria-disabled="false">Edit Hero</a>
+                </div>
             </div>
         </div>
         <br> {% endfor %}
@@ -45,8 +47,6 @@
         <a href="#" role="button" class="btn btn-warning" aria-disabled="false">Start Combat</a>
     </div>
 </div>
-<br>
-
-{% endblock %} {% block script_js %}
+<br> {% endblock %} {% block script_js %}
 <script type="text/javascript" src="{% static 'js/combat.js' %}"></script>
 {% endblock %}

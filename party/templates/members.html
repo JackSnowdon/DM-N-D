@@ -18,19 +18,23 @@
                 <p class="card-text">HP: {{ p.max_hp }}</p>
             </div>
             <div class="card-footer">
-                <form class="" method="post" action="{% url 'delete_player' p.id %}">
-                    {% csrf_token %}
-                    <div class="input-group">
-                        <span class="input-group-btn">
-                    <button class="btn btn-warning" type="submit">Delete</button>
-                </span>
+                <div class="row">
+                    <div class="col-6">
+                        <form class="" method="post" action="{% url 'delete_player' p.id %}">
+                            {% csrf_token %}
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-warning" type="submit">Delete</button>
+                                </span>
+                            </div>
+                        </form>
                     </div>
-                </form>
+                    <div class="col-6">
+                        <a href="{% url 'edit_player' p.id  %}" role="button" class="btn btn-warning" aria-disabled="false">Edit Hero</a>
+                    </div>
+
+                </div>
             </div>
+            <br> {% endfor %}
         </div>
-    </div>
-    <br> 
-    {% endfor %}
-</div>
-<br>
-{% endblock %}
+        <br> {% endblock %}

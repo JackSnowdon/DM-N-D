@@ -28,7 +28,13 @@
 /* Combat */
 
 .combat-box {
-    padding-bottom: 1rem;
+    width: 375px;
+    height: 25%;
+    display: inline-block;
+}
+
+.boldest {
+    font-weight: 700;
 }
 
 

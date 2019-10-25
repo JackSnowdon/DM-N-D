@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from .models import * 
 from .forms import *
 
@@ -47,4 +47,16 @@ def delete_monster(request, pk=id):
     instance = Base.objects.get(id=pk)
     instance.delete()
     return redirect(reverse('monsters'))
-    
+
+def edit_player(request, pk):
+    hero = get_object_or_404(Base, pk=pk)
+    if request.method == "POST":
+        hero_form = PlayerForm(request.POST, instance=hero)
+        if hero_form.is_valid():
+            player = hero_form.save(commit=False)
+            player.alignment = 'Player'
+            player.save()
+            return redirect('members')
+    else:
+        hero_form = PlayerForm(instance=hero)
+    return render(request, 'edit_hero.html', {'hero_form': hero_form})

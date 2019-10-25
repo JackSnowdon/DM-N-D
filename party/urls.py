@@ -8,4 +8,5 @@ urlpatterns = [
     path('add_enemy/', add_enemy, name="add_enemy"),
     path(r'delete_player/<int:pk>', delete_player, name="delete_player"),
     path(r'delete_monster/<int:pk>', delete_monster, name="delete_monster"),
+    path(r'edit_player/<int:pk>', edit_player, name="edit_player"),
 ]
