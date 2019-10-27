@@ -1,11 +1,11 @@
-{% extends 'base.html' %}  {% block page_title %} Edit Hero {% endblock %} {% block content %}
+{% extends 'base.html' %}  {% block page_title %} Edit Stats {% endblock %} {% block content %}
 
-<h2>Edit Hero</h2>
-<form role="form" method="post" id="edit-hero">
+<h2>Edit Stats</h2>
+<form role="form" method="post" id="edit-stats">
     <div class="form-group">
         {{ hero_form.as_p }}
         {% csrf_token %}
-        <input class="dsvr btn btn-success" id="submit_hero" name="commit" type="submit" value="Edit Hero">
+        <input class="dsvr btn btn-success" id="submit_stats" name="commit" type="submit" value="Edit Stats">
     </div>
 </form>
 

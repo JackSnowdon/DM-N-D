@@ -20,15 +20,6 @@ def add_hero(request):
         hero_form = AddToCombat()
     return render(request, 'add_hero.html', {'hero_form': hero_form})
     
-#def add_monster(request):
-#    if request.method == "POST":
-#        monster_form = AddMonsterForm(request.POST)
-#        if monster_form.is_valid():
-#            monster_form.save()
-#            return redirect('combat_home')
-#    else:
-#        monster_form = AddMonsterForm()
-#    return render(request, 'add_monster.html', {'monster_form': monster_form})
     
 def delete_hero_int(request, pk=id):
     instance = CombatMember.objects.get(hero_id=pk)
