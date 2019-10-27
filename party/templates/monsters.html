@@ -18,14 +18,21 @@
                 <p class="card-text"><span class="boldest">Max HP: </span>{{ m.max_hp }}</p>
             </div>
             <div class="card-footer">
-                <form class="" method="post" action="{% url 'delete_monster' m.id %}">
-                    {% csrf_token %}
-                    <div class="input-group">
-                        <span class="input-group-btn">
-                    <button class="btn btn-warning" type="submit">Delete</button>
-                </span>
+                <div class="row">
+                    <div class="col-6">
+                        <form class="" method="post" action="{% url 'delete_monster' m.id %}">
+                            {% csrf_token %}
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-warning" type="submit">Delete</button>
+                                </span>
+                            </div>
+                        </form>
                     </div>
-                </form>
+                    <div class="col-6">
+                        <a href="{% url 'edit_monster' m.id  %}" role="button" class="btn btn-warning" aria-disabled="false">Edit Monster</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

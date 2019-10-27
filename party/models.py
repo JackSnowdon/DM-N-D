@@ -15,7 +15,6 @@ class Base(models.Model):
     alignment = models.CharField(max_length=32, choices=alignment_choices, default=Player)
     max_hp = models.IntegerField()
     
-    
     def __str__(self):
         return self.name
         

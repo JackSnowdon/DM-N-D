@@ -60,3 +60,16 @@ def edit_player(request, pk):
     else:
         hero_form = PlayerForm(instance=hero)
     return render(request, 'edit_hero.html', {'hero_form': hero_form})
+    
+def edit_monster(request, pk):
+    monster = get_object_or_404(Base, pk=pk)
+    if request.method == "POST":
+        monster_form = EnemyForm(request.POST, instance=monster)
+        if monster_form.is_valid():
+            monster = monster_form.save(commit=False)
+            monster.alignment = 'NPC'
+            monster.save()
+            return redirect('monsters')
+    else:
+        monster_form = EnemyForm(instance=monster)
+    return render(request, 'edit_monster.html', {'monster_form': monster_form})
