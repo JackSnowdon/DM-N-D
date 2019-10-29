@@ -1,5 +1,7 @@
 from django.db import models
 from party.models import *
+from django.core.validators import MaxValueValidator, MinValueValidator 
+
 
 # Create your models here.
         
@@ -9,8 +11,8 @@ class CombatMember(models.Model):
         on_delete=models.CASCADE,
         primary_key=True,
     )
-    initiative = models.IntegerField(max_length=2)
-    current_hp = models.IntegerField(max_length=4)
+    initiative = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(30)])
+    current_hp = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(1000)])
     
     def __str__(self):
         return self.player.name

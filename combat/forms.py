@@ -8,5 +8,6 @@ class AddToCombat(forms.ModelForm):
         model = CombatMember
         fields = '__all__'
         labels = {
-            "hero": "Combatant"
+            "hero": "Combatant",
+            "current_hp": "Current HP"
         }

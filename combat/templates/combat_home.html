@@ -24,8 +24,11 @@
                 {% else %}
                 <h3 class="card-title boldest npc-party">{{ p.hero.name }}</h3>
                 {% endif %}
-                <p><span class="boldest">Current HP:</span> {{ p.current_hp }}</p>
-                <p class="card-text"><span class="boldest">Max HP:</span> {{ p.hero.max_hp }}</p>
+                {% if p.current_hp > p.hero.max_hp %}
+                <p><span class="boldest">HP:</span> {{ p.hero.max_hp }}/{{ p.hero.max_hp }}</p>
+                {% else %}
+                <p><span class="boldest">HP:</span> {{ p.current_hp }}/{{ p.hero.max_hp }}</p>
+                {% endif %}
                 <p class="card-text"><span class="boldest">Init:</span> {{ p.initiative }}</p>
             </div>
             <div class="card-footer">
