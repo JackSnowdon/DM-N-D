@@ -51,7 +51,7 @@
 
 
 
-/* Combat */
+/* Buttons */
 
 .btn-warning {
     transition: all 0.5s ease-in-out;
@@ -65,6 +65,7 @@
     border-color: black;
 }
 
+/* Combat */
 
 .combat-box {
     width: 375px;
@@ -76,12 +77,24 @@
     font-weight: 700;
 }
 
+.player-party {
+    color: #0c9e0c;
+}
+
+.npc-party {
+    color: #c91212;
+}
+
+.card-deck .card {
+    margin-bottom: 1rem;
+}
+
 
 /* Breaks */
 
 
 .bar-thin {
-    width: 25rem;
+    width: 15rem;
     height: 1.5px;
     border: 0;
     background-color: #ffffff;

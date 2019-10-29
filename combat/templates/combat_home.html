@@ -19,7 +19,11 @@
     <div class="col-12 col-md-4">
         <div class="card">
             <div class="card-body">
-                <h3 class="card-title boldest">{{ p.hero.name }}</h3>
+                {% if p.hero.alignment == "Player" %}
+                <h3 class="card-title boldest player-party">{{ p.hero.name }}</h3>
+                {% else %}
+                <h3 class="card-title boldest npc-party">{{ p.hero.name }}</h3>
+                {% endif %}
                 <p><span class="boldest">Current HP:</span> {{ p.current_hp }}</p>
                 <p class="card-text"><span class="boldest">Max HP:</span> {{ p.hero.max_hp }}</p>
                 <p class="card-text"><span class="boldest">Init:</span> {{ p.initiative }}</p>
