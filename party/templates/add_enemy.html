@@ -1,9 +1,9 @@
-{% extends 'base.html' %}  {% block page_title %} Add Enemy {% endblock %} {% block content %}
+{% extends 'base.html' %} {% load crispy_forms_tags %}  {% block page_title %} Add Enemy {% endblock %} {% block content %}
 
 <h2>New Enemy</h2>
 <form role="form" method="post" id="add-player-form" action="{% url 'add_enemy' %}">
     <div class="form-group">
-        {{ enemy_form.as_p }}
+        {{ enemy_form|crispy }}
         {% csrf_token %}
         <input class="btn btn-success" id="submit_enemy" name="commit" type="submit" value="Add Enemy">
     </div>

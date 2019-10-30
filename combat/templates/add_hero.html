@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block page_title %} Add Combatant {% endblock %} {% block content %}
+{% extends 'base.html' %} {% load crispy_forms_tags %}  {% block page_title %} Add Combatant {% endblock %} {% block content %}
 
 
 <div class="row">
@@ -7,7 +7,7 @@
         <br>
         <form role="form" method="post" id="add-combatant-form" action="{% url 'add_hero' %}">
             <div class="form-group">
-                {{ hero_form.as_p }} {% csrf_token %}
+                {{ hero_form|crispy }} {% csrf_token %}
                 <input class="btn btn-success" id="submit_combatant" name="commit" type="submit" value="Add Combatant">
             </div>
         </form>

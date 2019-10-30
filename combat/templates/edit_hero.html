@@ -1,9 +1,9 @@
-{% extends 'base.html' %}  {% block page_title %} Edit Stats {% endblock %} {% block content %}
+{% extends 'base.html' %} {% load crispy_forms_tags %}  {% block page_title %} Edit Stats {% endblock %} {% block content %}
 
 <h2>Edit Stats</h2>
 <form role="form" method="post" id="edit-stats">
     <div class="form-group">
-        {{ hero_form.as_p }}
+        {{ hero_form|crispy }}
         {% csrf_token %}
         <input class="dsvr btn btn-success" id="submit_stats" name="commit" type="submit" value="Edit Stats">
     </div>
