@@ -26,6 +26,10 @@ def delete_hero_int(request, pk=id):
     instance.delete()
     return redirect(reverse('combat_home'))
     
+def delete_all_from_combat(request):
+    CombatMember.objects.all().delete()
+    return redirect(reverse('combat_home'))
+    
 def edit_hero(request, pk):
     hero = get_object_or_404(CombatMember, pk=pk)
     if request.method == "POST":
