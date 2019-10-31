@@ -1,13 +1,23 @@
 {% extends 'base.html' %} {% load crispy_forms_tags %}  {% block page_title %} Edit Stats {% endblock %} {% block content %}
 
-<h2>Edit Stats</h2>
-<form role="form" method="post" id="edit-stats">
-    <div class="form-group">
-        {{ hero_form|crispy }}
-        {% csrf_token %}
-        <input class="dsvr btn btn-success" id="submit_stats" name="commit" type="submit" value="Edit Stats">
+<div class="row">
+    <div class="col-12 text-center">
+        <h2>Edit {{ hero.hero }}</h2>
+        <br>
+        <form role="form" method="post" id="edit-stats">
+            {% csrf_token %}
+            {{ hero_form.hero|as_crispy_field }}
+            <div class="form-row">
+                <div class="form-group col-md-6 mb-0">
+                    {{ hero_form.initiative|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-6 mb-0">
+                    {{ hero_form.current_hp|as_crispy_field }}
+                </div>
+            </div>
+
+            <input class="btn btn-success" id="edit_combatant" name="commit" type="submit" value="Edit Stats">
+        </form>
     </div>
-</form>
-
-
-{% endblock %}
+</div>
+<br> {% endblock %}

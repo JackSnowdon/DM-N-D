@@ -65,6 +65,7 @@
     border-color: black;
 }
 
+
 /* Combat */
 
 .combat-box {
@@ -98,4 +99,12 @@
     height: 1.5px;
     border: 0;
     background-color: #ffffff;
+}
+
+
+/* Form Helpers */
+
+.form-50 {
+    width: 50%;
+    display: inline-block;
 }
