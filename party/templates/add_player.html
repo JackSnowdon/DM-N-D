@@ -1,12 +1,40 @@
-{% extends 'base.html' %} {% load crispy_forms_tags %}   {% block page_title %} Add Player {% endblock %} {% block content %}
-
-<h2>New Player</h2>
-<form role="form" method="post" id="add-player-form" action="{% url 'add_player' %}">
-    <div class="form-group">
-        {{ player_form|crispy }}
-        {% csrf_token %}
-        <input class="btn btn-success" id="submit_player" name="commit" type="submit" value="Add Player">
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block page_title %} Add Player {% endblock %} {% block content %}
+<div class="row">
+    <div class="col-12 text-center">
+        <h2>New Player</h2>
+        <form role="form" method="post" id="add-player-form" action="{% url 'add_player' %}">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group col-md-6 mb-0">
+                    {{ player_form.name|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-6 mb-0">
+                    {{ player_form.max_hp|as_crispy_field }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-2 mb-0">
+                    {{ player_form.strengh|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-2 mb-0">
+                    {{ player_form.dex|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-2 mb-0">
+                    {{ player_form.intel|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-2 mb-0">
+                    {{ player_form.wisdom|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-2 mb-0">
+                    {{ player_form.con|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-2 mb-0">
+                    {{ player_form.charisma|as_crispy_field }}
+                </div>
+            </div>
+            <input class="btn btn-success" id="submit_player" name="commit" type="submit" value="Add Player">
+        </form>
     </div>
-</form>
+</div>
 
 {% endblock %}

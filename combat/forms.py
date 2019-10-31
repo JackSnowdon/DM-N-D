@@ -11,3 +11,12 @@ class AddToCombat(forms.ModelForm):
             "hero": "Combatant",
             "current_hp": "Current HP"
         }
+        
+class EditCombat(forms.ModelForm):
+
+    class Meta:
+        model = CombatMember
+        exclude = ['hero']
+        labels = {
+            "current_hp": "Current HP"
+        }

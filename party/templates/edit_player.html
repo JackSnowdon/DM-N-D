@@ -1,15 +1,44 @@
 {% extends 'base.html' %} {% load crispy_forms_tags %}  {% block page_title %} Edit Player {% endblock %} {% block content %}
 
-
-
-<h2>Edit Hero</h2>
-<form role="form" method="post" id="edit-hero">
-    <div class="form-group">
-        {% csrf_token %}
-        {{ hero_form|crispy }}
-        <input class="dsvr btn btn-success" id="submit_hero" name="commit" type="submit" value="Edit Hero">
+<div class="row">
+    <div class="col-12 text-center">
+        <h2>Edit {{ hero.name }}</h2>
+        <form role="form" method="post" id="edit-hero">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group col-md-6 mb-0">
+                    {{ hero_form.name|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-6 mb-0">
+                    {{ hero_form.max_hp|as_crispy_field }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-2 mb-0">
+                    {{ hero_form.strengh|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-2 mb-0">
+                    {{ hero_form.dex|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-2 mb-0">
+                    {{ hero_form.intel|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-2 mb-0">
+                    {{ hero_form.wisdom|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-2 mb-0">
+                    {{ hero_form.con|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-2 mb-0">
+                    {{ hero_form.charisma|as_crispy_field }}
+                </div>
+            </div>
+            <input class="dsvr btn btn-success" id="submit_hero" name="commit" type="submit" value="Edit Hero">
+        </form>
     </div>
-</form>
+</div>
+
+
 
 
 {% endblock %}

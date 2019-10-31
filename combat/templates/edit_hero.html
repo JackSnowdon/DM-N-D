@@ -6,7 +6,6 @@
         <br>
         <form role="form" method="post" id="edit-stats">
             {% csrf_token %}
-            {{ hero_form.hero|as_crispy_field }}
             <div class="form-row">
                 <div class="form-group col-md-6 mb-0">
                     {{ hero_form.initiative|as_crispy_field }}
@@ -15,7 +14,6 @@
                     {{ hero_form.current_hp|as_crispy_field }}
                 </div>
             </div>
-
             <input class="btn btn-success" id="edit_combatant" name="commit" type="submit" value="Edit Stats">
         </form>
     </div>

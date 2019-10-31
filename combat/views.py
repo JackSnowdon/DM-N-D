@@ -33,13 +33,14 @@ def delete_all_from_combat(request):
 def edit_hero(request, pk):
     hero = get_object_or_404(CombatMember, pk=pk)
     if request.method == "POST":
-        hero_form = AddToCombat(request.POST, instance=hero)
-        print(AddToCombat)
+        hero_form = EditCombat(request.POST, instance=hero)
         if hero_form.is_valid():
-            hero_form.save()
+            form = hero_form.save(commit=False)
+            form.alignment = hero.hero
+            form.save()
             return redirect('combat_home')
     else:
-        hero_form = AddToCombat(instance=hero)
+        hero_form = EditCombat(instance=hero)
     return render(request, 'edit_hero.html', {'hero_form': hero_form, 'hero':hero})
     
     

@@ -8,7 +8,10 @@ class PlayerForm(forms.ModelForm):
         model = Base
         exclude = ['alignment']
         labels = {
-            "max_hp": "Max HP"
+            "max_hp": "Max HP",
+            "dex": "Dexterity",
+            "intel": "Intelligence",
+            "con": "Constitution"
         }
         
 class EnemyForm(forms.ModelForm):
