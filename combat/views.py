@@ -21,7 +21,9 @@ def add_hero(request):
             maxhp = hero.max_hp
             if current_hp <= maxhp:
                 hero_form.save()
-                return redirect('combat_home')
+                messages.error(request, 'Added {0} to combat'.format(hero.name), extra_tags='alert')
+                print("test")
+                return redirect(reverse('combat_home'))
             else:
                 messages.warning(request, 'Your current HP can not exceed your Max HP! ({0} HP)'.format(maxhp), extra_tags='alert')
     else:
@@ -43,10 +45,17 @@ def edit_hero(request, pk):
     if request.method == "POST":
         hero_form = EditCombat(request.POST, instance=hero)
         if hero_form.is_valid():
-            form = hero_form.save(commit=False)
-            form.alignment = hero.hero
-            form.save()
-            return redirect('combat_home')
+            current_hp = int(request.POST.get('current_hp'))
+            base = get_object_or_404(Base, pk=pk)
+            maxhp = base.max_hp
+            if current_hp <= maxhp:
+                form = hero_form.save(commit=False)
+                form.alignment = hero.hero
+                form.save()
+                messages.warning(request, 'Edited {0}'.format(base.name), extra_tags='alert')
+                return redirect('combat_home')
+            else:
+                messages.warning(request, 'Your current HP can not exceed your Max HP! ({0} HP)'.format(maxhp), extra_tags='alert')
     else:
         hero_form = EditCombat(instance=hero)
     return render(request, 'edit_hero.html', {'hero_form': hero_form, 'hero':hero})
