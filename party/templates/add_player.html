@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load crispy_forms_tags %} {% block page_title %} Add Player {% endblock %} {% block content %}
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% load staticfiles %} {% block page_title %} Add Player {% endblock %} {% block content %}
 <div class="row">
     <div class="col-12 text-center">
         <h2>New Player</h2>
@@ -34,7 +34,10 @@
             </div>
             <input class="btn btn-success" id="submit_player" name="commit" type="submit" value="Add Player">
         </form>
+        <br>
+    <a href="{% url 'members' %}">
+        <img src="{% static 'imgs/return-arrow.png' %}" alt="Training" class="img-fluid img-button">
+    </a>
     </div>
 </div>
-
-{% endblock %}
+<br> {% endblock %}

@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load crispy_forms_tags %}  {% block page_title %} Edit Monster {% endblock %} {% block content %}
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% load staticfiles %} {% block page_title %} Edit Monster {% endblock %} {% block content %}
 
 
 <div class="row">
@@ -36,6 +36,11 @@
             </div>
             <input class="dsvr btn btn-success" id="submit_hero" name="commit" type="submit" value="Edit Monster">
         </form>
+        <br>
+    <a href="{% url 'monsters' %}">
+        <img src="{% static 'imgs/return-arrow.png' %}" alt="Training" class="img-fluid img-button">
+    </a>
+    <br>
     </div>
 </div>
 

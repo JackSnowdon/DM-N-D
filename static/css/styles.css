@@ -39,11 +39,16 @@
 }
 
 
-/* Form Helpers */
+/* Helpers */
 
 
 .input-group {
     display: inline-block;
+}
+
+.img-button {
+    height: 75px;
+    width: 75px;
 }
 
 

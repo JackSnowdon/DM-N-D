@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from .models import * 
 from .forms import *
+from django.contrib import messages
 
 # Create your views here.
 
@@ -16,6 +17,7 @@ def add_player(request):
             player = player_form.save(commit=False)
             player.alignment = 'Player'
             player.save()
+            messages.error(request, 'Added {0}'.format(player.name), extra_tags='alert boldest')
             return redirect('members')
     else:
         player_form = PlayerForm()
@@ -33,6 +35,7 @@ def add_enemy(request):
             enemy = enemy_form.save(commit=False)
             enemy.alignment = 'NPC'
             enemy.save()
+            messages.error(request, 'Added {0}'.format(enemy.name), extra_tags='alert boldest')
             return redirect('monsters')
     else:
         enemy_form = EnemyForm()
@@ -41,11 +44,13 @@ def add_enemy(request):
 def delete_player(request, pk=id):
     instance = Base.objects.get(id=pk)
     instance.delete()
+    messages.error(request, 'Deleted {0}'.format(instance.name), extra_tags='alert boldest')
     return redirect(reverse('members'))
     
 def delete_monster(request, pk=id):
     instance = Base.objects.get(id=pk)
     instance.delete()
+    messages.error(request, 'Deleted {0}'.format(instance.name), extra_tags='alert boldest')
     return redirect(reverse('monsters'))
 
 def edit_player(request, pk):
@@ -56,6 +61,7 @@ def edit_player(request, pk):
             player = hero_form.save(commit=False)
             player.alignment = 'Player'
             player.save()
+            messages.warning(request, 'Edited {0}'.format(player.name), extra_tags='alert boldest')
             return redirect('members')
     else:
         hero_form = PlayerForm(instance=hero)
@@ -69,6 +75,7 @@ def edit_monster(request, pk):
             monster = monster_form.save(commit=False)
             monster.alignment = 'NPC'
             monster.save()
+            messages.warning(request, 'Edited {0}'.format(monster.name), extra_tags='alert boldest')
             return redirect('monsters')
     else:
         monster_form = EnemyForm(instance=monster)

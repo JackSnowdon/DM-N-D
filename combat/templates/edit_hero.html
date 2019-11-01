@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load crispy_forms_tags %}  {% block page_title %} Edit Stats {% endblock %} {% block content %}
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% load staticfiles %}  {% block page_title %} Edit Stats {% endblock %} {% block content %}
 
 <div class="row">
     <div class="col-12 text-center">
@@ -16,6 +16,13 @@
             </div>
             <input class="btn btn-success" id="edit_combatant" name="commit" type="submit" value="Edit Stats">
         </form>
+        
+        <br>
+        <br>
+        <a href="{% url 'combat_home' %}">
+        <img src="{% static 'imgs/return-arrow.png' %}" alt="Training" class="img-fluid img-button">
+        </a>
+        <br>
     </div>
 </div>
 <br> {% endblock %}
