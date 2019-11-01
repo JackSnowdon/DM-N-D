@@ -21,7 +21,7 @@ def add_hero(request):
             maxhp = hero.max_hp
             if current_hp <= maxhp:
                 hero_form.save()
-                messages.error(request, 'Added {0} to combat'.format(hero.name), extra_tags='alert')
+                messages.error(request, 'Added {0} to combat'.format(hero.name), extra_tags='alert boldest')
                 print("test")
                 return redirect(reverse('combat_home'))
             else:
@@ -52,7 +52,7 @@ def edit_hero(request, pk):
                 form = hero_form.save(commit=False)
                 form.alignment = hero.hero
                 form.save()
-                messages.warning(request, 'Edited {0}'.format(base.name), extra_tags='alert')
+                messages.warning(request, 'Edited {0}'.format(base.name), extra_tags='alert boldest')
                 return redirect('combat_home')
             else:
                 messages.warning(request, 'Your current HP can not exceed your Max HP! ({0} HP)'.format(maxhp), extra_tags='alert')
