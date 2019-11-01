@@ -1,1 +1,1 @@
-web: gunicorn fightclub.wsgi:application
+web: gunicorn dnd.wsgi:application

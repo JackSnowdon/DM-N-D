@@ -26,22 +26,22 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if os.getenv('HOSTNAME') == 'django-n-d.herokuapp.com':
     ALLOWED_HOSTS = [os.getenv('HOSTNAME')]
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    DEBUG = True
-##    DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
+    DEBUG = False
+    DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
 else:
     if os.path.exists('env.py'):
         import env
     ALLOWED_HOSTS = ['118708f72ede48f3b521db09fe0a0377.vfs.cloud9.us-east-1.amazonaws.com']
     SECRET_KEY = os.environ.get('SECRET_KEY')
     DEBUG = True
-#    DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#    }
-#}
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
-DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
+#DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
 
 
 # Application definition
