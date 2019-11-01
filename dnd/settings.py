@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # If Else loop to declare correct env vars depending on location 
 
 if os.getenv('HOSTNAME') == 'django-n-d.herokuapp.com':
-    ALLOWED_HOSTS = [os.getenv('HOSTNAME')]
+    ALLOWED_HOSTS = ['django-n-d.herokuapp.com']
     SECRET_KEY = os.environ.get('SECRET_KEY')
     DEBUG = False
     DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
