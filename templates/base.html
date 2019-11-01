@@ -42,6 +42,12 @@
     <div class="bg main-text">
         <br>
         <div class="container">
+            {% if messages %}
+            <div class="text-center">
+                {% for message in messages %}
+                <h4 class="{{ message.tags }}">{{ message }}</h4>{% endfor %}
+            </div>
+            {% endif %}
             {% block content %} {% endblock %}
         </div>
     </div>

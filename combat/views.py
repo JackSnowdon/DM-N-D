@@ -3,6 +3,7 @@ from itertools import chain
 from .models import *
 from .forms import *
 from party.models import * 
+from django.contrib import messages
 
 # Create your views here.
 
@@ -14,8 +15,15 @@ def add_hero(request):
     if request.method == "POST":
         hero_form = AddToCombat(request.POST)
         if hero_form.is_valid():
-            hero_form.save()
-            return redirect('combat_home')
+            current_hp = int(request.POST.get('current_hp'))
+            pk = request.POST.get('hero')
+            hero = get_object_or_404(Base, pk=pk)
+            maxhp = hero.max_hp
+            if current_hp <= maxhp:
+                hero_form.save()
+                return redirect('combat_home')
+            else:
+                messages.warning(request, 'Your current HP can not exceed your Max HP! ({0} HP)'.format(maxhp), extra_tags='alert')
     else:
         hero_form = AddToCombat()
     return render(request, 'add_hero.html', {'hero_form': hero_form})

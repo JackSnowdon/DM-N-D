@@ -14,7 +14,7 @@ alignment_choices = (
 class Base(models.Model):
     name = models.CharField(max_length=100)
     alignment = models.CharField(max_length=32, choices=alignment_choices, default=Player)
-    max_hp = models.PositiveIntegerField()
+    max_hp = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5000)])
     strengh = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(20)])
     dex = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(20)])
     intel = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(20)])

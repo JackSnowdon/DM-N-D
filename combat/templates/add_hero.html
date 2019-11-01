@@ -6,8 +6,7 @@
         <h2>New Combatant</h2>
         <br>
         <form role="form" method="post" id="add-combatant-form" class="form-50" action="{% url 'add_hero' %}">
-            {% csrf_token %}
-            {{ hero_form.hero|as_crispy_field }}
+            {% csrf_token %} {{ hero_form.hero|as_crispy_field }}
             <div class="form-row">
                 <div class="form-group col-md-6 mb-0">
                     {{ hero_form.initiative|as_crispy_field }}
