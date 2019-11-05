@@ -4,6 +4,7 @@ from .models import *
 from .forms import *
 from party.models import * 
 from django.contrib import messages
+from django.views.generic import DetailView
 
 # Create your views here.
 
@@ -60,5 +61,6 @@ def edit_hero(request, pk):
         hero_form = EditCombat(instance=hero)
     return render(request, 'edit_hero.html', {'hero_form': hero_form, 'hero':hero})
     
-    
+class SingleCombatMember(DetailView):
+    model = CombatMember
     

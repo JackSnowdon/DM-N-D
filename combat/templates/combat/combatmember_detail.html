@@ -1,0 +1,48 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% load staticfiles %} {% block page_title %} Edit Stats {% endblock %} {% block content %}
+
+<div class="row">
+    <div class="col-12 text-center">
+        {% if p.hero.alignment == "Player" %}
+        <h3 class="card-title boldest player-party">{{ object.hero.name }}</h3>
+        {% else %}
+        <h3 class="card-title boldest npc-party">{{ object.hero.name }}</h3>
+        {% endif %} {% if object.current_hobject > object.hero.max_hp %}
+        <p><span class="boldest">HP:</span> {{ object.hero.max_hp }}/{{ object.hero.max_hp }}</p>
+        {% else %}
+        <p><span class="boldest">HP:</span> {{ object.current_hp }}/{{ object.hero.max_hp }}</p>
+        {% endif %}
+        <p class="card-text"><span class="boldest">Init:</span> {{ object.initiative }}</p>
+    </div>
+</div>
+
+<br>
+<div class="row text-center">
+    <div class="form-group col-md-4 mb-0">
+        <p><span class="boldest">Strengh: </span>{{ object.hero.strengh }}</p>
+    </div>
+    <div class="form-group col-md-4 mb-0">
+        <p><span class="boldest">Dexterity: </span>{{ object.hero.dex }}</p>
+    </div>
+    <div class="form-group col-md-4 mb-0">
+        <p><span class="boldest">Intelligence: </span>{{ object.hero.intel }}</p>
+    </div>
+    <div class="form-group col-md-4 mb-0">
+        <p><span class="boldest">Wisdom: </span>{{ object.hero.wisdom }}</p>
+    </div>
+    <div class="form-group col-md-4 mb-0">
+        <p><span class="boldest">Constitution: </span>{{ object.hero.con }}</p>
+    </div>
+    <div class="form-group col-md-4 mb-0">
+        <p><span class="boldest">Charisma: </span>{{ object.hero.charisma }}</p>
+    </div>
+    <br>
+</div>
+<div class="row">
+    <div class="col-12 text-center">
+        <a href="{% url 'combat_home' %}">
+        <img src="{% static 'imgs/return-arrow.png' %}" alt="Training" class="img-fluid img-button">
+    </a>
+    </div>
+</div>
+
+<br> {% endblock %}
