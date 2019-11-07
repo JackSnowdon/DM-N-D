@@ -12,9 +12,9 @@
 <div class="row text-center">
     <div class="col-6">
         {% if object.current_hp > object.hero.max_hp %}
-        <h4><span class="boldest">HP:</span> {{ object.hero.max_hp }}/{{ object.hero.max_hp }}</h4>
+        <h3><span class="boldest">HP:</span> {{ object.hero.max_hp }}/{{ object.hero.max_hp }}</h3>
         {% else %}
-        <h4><span class="boldest">HP:</span> {{ object.current_hp }}/{{ object.hero.max_hp }}</h4>
+        <h3><span class="boldest">HP:</span> {{ object.current_hp }}/{{ object.hero.max_hp }}</h3>
         {% endif %}
     </div>
     <div class="col-6">
@@ -26,22 +26,22 @@
 <div class="stat-box">
     <div class="row text-center">
         <div class="col-md-4 mb-0">
-            <p><span class="boldest">Strengh: </span>{{ object.hero.strengh }}</p>
+            <p><span class="boldest">Strength</span></br>{{ object.hero.strengh }}</p>
         </div>
         <div class="col-md-4 mb-0">
-            <p><span class="boldest">Dexterity: </span>{{ object.hero.dex }}</p>
+            <p><span class="boldest">Dexterity</span></br>{{ object.hero.dex }}</p>
         </div>
         <div class="col-md-4 mb-0">
-            <p><span class="boldest">Intelligence: </span>{{ object.hero.intel }}</p>
+            <p><span class="boldest">Intelligence</span></br>{{ object.hero.intel }}</p>
         </div>
         <div class="col-md-4 mb-0">
-            <p><span class="boldest">Wisdom: </span>{{ object.hero.wisdom }}</p>
+            <p><span class="boldest">Wisdom</span></br>{{ object.hero.wisdom }}</p>
         </div>
         <div class="col-md-4 mb-0">
-            <p><span class="boldest">Constitution: </span>{{ object.hero.con }}</p>
+            <p><span class="boldest">Constitution</span></br>{{ object.hero.con }}</p>
         </div>
         <div class="col-md-4 mb-0">
-            <p><span class="boldest">Charisma: </span>{{ object.hero.charisma }}</p>
+            <p><span class="boldest">Charisma</span></br>{{ object.hero.charisma }}</p>
         </div>
         <br>
     </div>
