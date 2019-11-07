@@ -2,7 +2,10 @@ $(document).ready(function() {
 
     $("#start-combat").click(function() {
 
-        var index = $('.card:first').index('.card:first') + 1;
+
+        var index = $(".card").index(".card") + 1;
+
+        // var index = $('.card:first').index('.card:first') + 1;
 
         console.log(index);
 
@@ -16,14 +19,15 @@ $(document).ready(function() {
 
         $("#next-button").click(function() {
             if (index == 1) {
-                $(".card:first").removeClass("select-box")
-                console.log("Dick");
+                var firstcard = $(".card:first");
+                console.log(firstcard);
+                firstcard.removeClass("select-box");
             }
-            else {
-                $(".card").eq(index).removeClass("select-box");
-                console.log("test!");
-            }
-            var first = $(".card:first")
+            
+            setTimeout(function() {
+                var currentcard = $(".card.select-box:first");
+                currentcard.removeClass("select-box");
+            }, 1000);
 
             setTimeout(function() {
                 $(".card").eq(index).addClass("select-box");
