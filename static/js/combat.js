@@ -7,8 +7,6 @@ $(document).ready(function() {
 
         // var index = $('.card:first').index('.card:first') + 1;
 
-        console.log(index);
-
         $("#start-combat").hide();
         $("#delete-all-combat").hide();
         $("#add-hero").hide();
@@ -18,19 +16,12 @@ $(document).ready(function() {
         }, 1000);
 
         $("#next-button").click(function() {
-            if (index == 1) {
-                var firstcard = $(".card:first");
-                console.log(firstcard);
-                firstcard.removeClass("select-box");
-            }
-            
+            var removecard = $(".card.select-box:first");
+            removecard.removeClass("select-box");
             setTimeout(function() {
-                var currentcard = $(".card.select-box:first");
-                currentcard.removeClass("select-box");
-            }, 1000);
-
-            setTimeout(function() {
-                $(".card").eq(index).addClass("select-box");
+                currentcard = $(".card").eq(index);
+                console.log(currentcard);
+                currentcard.addClass("select-box");
                 index++;
                 console.log(index);
             }, 1000);
