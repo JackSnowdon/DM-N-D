@@ -99,6 +99,13 @@
     font-size: 1.4rem;
 }
 
+.select-box {
+    border-color: red;
+}
+
+#next-button {
+    display: none;
+}
 
 /* Breaks */
 

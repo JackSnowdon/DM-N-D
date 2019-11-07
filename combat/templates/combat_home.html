@@ -10,7 +10,7 @@
 </div>
 <div class="row text-center">
     <div class="col-12">
-        <a href="{% url 'add_hero' %}" role="button" class="btn btn-warning" aria-disabled="false">Add Combatant</a>
+        <a href="{% url 'add_hero' %}" role="button" class="btn btn-warning" id="add-hero" aria-disabled="false">Add Combatant</a>
     </div>
 </div>
 <br>
@@ -23,8 +23,7 @@
                 <h3 class="card-title boldest player-party">{{ p.hero.name }}</h3>
                 {% else %}
                 <h3 class="card-title boldest npc-party">{{ p.hero.name }}</h3>
-                {% endif %}
-                {% if p.current_hp > p.hero.max_hp %}
+                {% endif %} {% if p.current_hp > p.hero.max_hp %}
                 <p><span class="boldest">HP:</span> {{ p.hero.max_hp }}/{{ p.hero.max_hp }}</p>
                 {% else %}
                 <p><span class="boldest">HP:</span> {{ p.current_hp }}/{{ p.hero.max_hp }}</p>
@@ -56,7 +55,7 @@
             </div>
         </div>
     </div>
-{% endfor %}
+    {% endfor %}
 </div>
 
 <hr class="bar-thin">
@@ -68,7 +67,8 @@
 <br>
 <div class="col-12">
     <div class="text-center">
-        <a href="#" role="button" class="btn btn-warning" aria-disabled="false">Start Combat</a>
+        <a id="start-combat" role="button" class="btn btn-warning" aria-disabled="false">Start Combat</a>
+        <a id="next-button" role="button" class="btn btn-warning" aria-disabled="false">Next</a>
     </div>
 </div>
 <br> {% endblock %} {% block script_js %}
