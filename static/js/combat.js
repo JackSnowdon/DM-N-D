@@ -2,8 +2,10 @@ $(document).ready(function() {
 
     $("#start-combat").click(function() {
 
-
+        var decksize = $(".card").length;
+        console.log(decksize);
         var index = $(".card").index(".card") + 1;
+        console.log(decksize, index);
 
         // var index = $('.card:first').index('.card:first') + 1;
 
@@ -18,13 +20,22 @@ $(document).ready(function() {
         $("#next-button").click(function() {
             var removecard = $(".card.select-box:first");
             removecard.removeClass("select-box");
-            setTimeout(function() {
-                currentcard = $(".card").eq(index);
-                console.log(currentcard);
-                currentcard.addClass("select-box");
-                index++;
-                console.log(index);
-            }, 1000);
+
+            if (decksize > index) {
+                setTimeout(function() {
+                    currentcard = $(".card").eq(index);
+                    console.log(currentcard);
+                    currentcard.addClass("select-box");
+                    index++;
+                    console.log(index);
+                }, 1000);
+            } else {
+                console.log("done!");
+                $("#next-button").fadeOut("slow");
+                setTimeout(function() {
+                    $("#start-combat").show();
+                }, 1000);
+            }
         });
     });
 });
