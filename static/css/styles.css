@@ -74,9 +74,16 @@
 /* Combat */
 
 .combat-box {
-    width: 375px;
-    height: 25%;
+    width: 100%;
+    height: 22rem;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
     display: inline-block;
+}
+
+#hide-combat {
+    display: none;
 }
 
 .boldest {
