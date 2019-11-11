@@ -17,6 +17,19 @@ $(document).ready(function() {
     function getCurrentName(x) {
         return $(x).find(".card-title").text();
     }
+    
+    function getCurrentHp(x) {
+        return $(x).find("#card-hp").text();
+    }
+    
+    function setStats(x) {
+        var name = getCurrentName(x);
+        var hp = getCurrentHp(x);
+        $("#turn-name").text(name);
+        $("#turn-hp").text(hp);
+        $("#turn-owner").fadeIn();
+        $("#turn-health").fadeIn();
+    }
 
 
     $("#start-combat").click(function() {
@@ -33,13 +46,11 @@ $(document).ready(function() {
             $(".card:first").addClass("select-box");
             currentcard = getCurrentCard();
             console.log(currentcard);
-
             var name = getCurrentName(currentcard);
-
-            console.log(name);
-
+            var hp = getCurrentHp(currentcard);
+            console.log(name, hp);
             $("#turn-name").text(name);
-
+            $("#turn-hp").text(hp);
             setTimeout(function() {
                 $("#hide-combat").fadeIn("slow");
             }, 1000);
@@ -51,7 +62,8 @@ $(document).ready(function() {
     $("#next-button").click(function() {
         $("#next-button").attr("disabled", true);
 
-        $("#turn-name").fadeOut();
+        $("#turn-owner").fadeOut();
+        $("#turn-health").fadeOut();
 
         if (repeat > 0) {
             index = 1;
@@ -67,10 +79,7 @@ $(document).ready(function() {
                 currentcard.addClass("select-box");
                 $("#next-button").attr("disabled", false);
                 console.log(currentcard);
-                var name = getCurrentName(currentcard);
-                console.log(name);
-                $("#turn-name").text(name);
-                $("#turn-name").fadeIn();
+                setStats(currentcard);
                 index++;
             }, 1000);
         }
@@ -84,8 +93,11 @@ $(document).ready(function() {
     });
 
 
+    
+
+
     $("#next-round").click(function() {
-        $("#turn-name").fadeOut();
+        $("#turn-owner").fadeOut();
         $("#next-round").hide();
         var decksize = $(".card").length;
         var index = $(".card").index(".card") + 1;
@@ -94,10 +106,7 @@ $(document).ready(function() {
             $(".card:first").addClass("select-box");
             currentcard = getCurrentCard();
             console.log(currentcard);
-            var name = getCurrentName(currentcard);
-            console.log(name);
-            $("#turn-name").text(name);
-            $("#turn-name").fadeIn();
+            setStats(currentcard);
             repeat++;
         }, 1000);
 

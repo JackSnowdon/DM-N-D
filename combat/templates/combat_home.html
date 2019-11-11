@@ -15,8 +15,15 @@
 </div>
 <br>
 
-<div class="combat-box" id="hide-combat">
-    <div class="h3" id="turn-name"></div>
+<div class="row">
+    <div class="col-12">
+        <div class="combat-box text-center" id="hide-combat">
+            <div class="combat-inner">
+                <h3 id="turn-owner">It's <span id="turn-name"></span> Turn!</h3>
+                <h3 id="turn-health">Current HP: <span id="turn-hp"></span> </h3>
+            </div>
+        </div>
+    </div>
 </div>
 
 <br>
@@ -31,9 +38,9 @@
                 {% else %}
                 <h3 class="card-title boldest npc-party">{{ p.hero.name }}</h3>
                 {% endif %} {% if p.current_hp > p.hero.max_hp %}
-                <p><span class="boldest">HP:</span> {{ p.hero.max_hp }}/{{ p.hero.max_hp }}</p>
+                <p><span class="boldest">HP:</span> <span id="card-hp">{{ p.hero.max_hp }}</span>/{{ p.hero.max_hp }}</p>
                 {% else %}
-                <p><span class="boldest">HP:</span> {{ p.current_hp }}/{{ p.hero.max_hp }}</p>
+                <p><span class="boldest">HP:</span> <span id="card-hp">{{ p.current_hp }}</span>/{{ p.hero.max_hp }}</p>
                 {% endif %}
                 <p class="card-text"><span class="boldest">Init:</span> {{ p.initiative }}</p>
             </div>
