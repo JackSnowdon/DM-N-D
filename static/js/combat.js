@@ -17,15 +17,20 @@ $(document).ready(function() {
     function getCurrentName(x) {
         return $(x).find(".card-title").text();
     }
-    
+
     function getCurrentHp(x) {
         return $(x).find("#card-hp").text();
     }
-    
+
     function getMaxHp(x) {
         return $(x).find("#card-max-hp").text();
     }
-    
+
+    function startCombat() {
+        $("#next-button").fadeIn("slow");
+        $(".card:first").addClass("select-box");
+    }
+
     function setStats(x) {
         var name = getCurrentName(x);
         var hp = getCurrentHp(x);
@@ -35,6 +40,7 @@ $(document).ready(function() {
         $("#turn-max-hp").text(maxhp);
         $("#turn-owner").fadeIn();
         $("#turn-health").fadeIn();
+        $(".combat-buttons").fadeIn();
     }
 
 
@@ -48,8 +54,7 @@ $(document).ready(function() {
         $("#delete-all-combat").hide();
         $("#add-hero").hide();
         setTimeout(function() {
-            $("#next-button").fadeIn("slow");
-            $(".card:first").addClass("select-box");
+            startCombat();
             currentcard = getCurrentCard();
             console.log(currentcard);
             setStats(currentcard);
@@ -66,6 +71,7 @@ $(document).ready(function() {
 
         $("#turn-owner").fadeOut();
         $("#turn-health").fadeOut();
+        $(".combat-buttons").fadeOut();
 
         if (repeat > 0) {
             index = 1;
@@ -94,18 +100,11 @@ $(document).ready(function() {
         }
     });
 
-
-    
-
-
     $("#next-round").click(function() {
-        $("#turn-owner").fadeOut();
         $("#next-round").hide();
-        var decksize = $(".card").length;
         var index = $(".card").index(".card") + 1;
         setTimeout(function() {
-            $("#next-button").fadeIn("slow");
-            $(".card:first").addClass("select-box");
+            startCombat();
             currentcard = getCurrentCard();
             console.log(currentcard);
             setStats(currentcard);
