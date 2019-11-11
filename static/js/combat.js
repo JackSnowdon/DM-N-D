@@ -14,9 +14,12 @@ $(document).ready(function() {
         return $(".card.select-box");
     }
 
-    $("#start-combat").click(function() {
-        $("#hide-combat").fadeIn("slow");
+    function getCurrentName(x) {
+        return $(x).find(".card-title").text();
+    }
 
+
+    $("#start-combat").click(function() {
 
         repeat = 0;
         decksize = getDeckSize();
@@ -31,18 +34,24 @@ $(document).ready(function() {
             currentcard = getCurrentCard();
             console.log(currentcard);
 
-            var name = $(currentcard).find(".card-title").text();
+            var name = getCurrentName(currentcard);
 
             console.log(name);
 
+            $("#turn-name").text(name);
+
+            setTimeout(function() {
+                $("#hide-combat").fadeIn("slow");
+            }, 1000);
+
         }, 1000);
-
-
     });
 
 
     $("#next-button").click(function() {
         $("#next-button").attr("disabled", true);
+
+        $("#turn-name").fadeOut();
 
         if (repeat > 0) {
             index = 1;
@@ -58,11 +67,10 @@ $(document).ready(function() {
                 currentcard.addClass("select-box");
                 $("#next-button").attr("disabled", false);
                 console.log(currentcard);
-
-                var name = $(currentcard).find(".card-title").text();
-
+                var name = getCurrentName(currentcard);
                 console.log(name);
-
+                $("#turn-name").text(name);
+                $("#turn-name").fadeIn();
                 index++;
             }, 1000);
         }
@@ -75,17 +83,24 @@ $(document).ready(function() {
         }
     });
 
+
     $("#next-round").click(function() {
+        $("#turn-name").fadeOut();
         $("#next-round").hide();
         var decksize = $(".card").length;
         var index = $(".card").index(".card") + 1;
         setTimeout(function() {
             $("#next-button").fadeIn("slow");
             $(".card:first").addClass("select-box");
+            currentcard = getCurrentCard();
+            console.log(currentcard);
+            var name = getCurrentName(currentcard);
+            console.log(name);
+            $("#turn-name").text(name);
+            $("#turn-name").fadeIn();
+            repeat++;
         }, 1000);
-        currentcard = $(".card").eq(index - 1);
-        console.log(currentcard);
-        repeat++;
+
     });
 
 });

@@ -15,12 +15,12 @@ class Base(models.Model):
     name = models.CharField(max_length=100)
     alignment = models.CharField(max_length=32, choices=alignment_choices, default=Player)
     max_hp = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5000)])
-    strengh = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(20)])
-    dex = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(20)])
-    intel = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(20)])
-    wisdom = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(20)])
-    con = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(20)])
-    charisma = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(20)])
+    strengh = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(30)])
+    dex = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(30)])
+    intel = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(30)])
+    wisdom = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(30)])
+    con = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(30)])
+    charisma = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(30)])
     
     
     def __str__(self):
