@@ -114,6 +114,10 @@
     border-color: red;
 }
 
+.fixed {
+    position: fixed;
+}
+
 #next-round,
 #next-button {
     display: none;

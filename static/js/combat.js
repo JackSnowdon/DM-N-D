@@ -22,11 +22,17 @@ $(document).ready(function() {
         return $(x).find("#card-hp").text();
     }
     
+    function getMaxHp(x) {
+        return $(x).find("#card-max-hp").text();
+    }
+    
     function setStats(x) {
         var name = getCurrentName(x);
         var hp = getCurrentHp(x);
+        var maxhp = getMaxHp(x);
         $("#turn-name").text(name);
         $("#turn-hp").text(hp);
+        $("#turn-max-hp").text(maxhp);
         $("#turn-owner").fadeIn();
         $("#turn-health").fadeIn();
     }
@@ -46,11 +52,7 @@ $(document).ready(function() {
             $(".card:first").addClass("select-box");
             currentcard = getCurrentCard();
             console.log(currentcard);
-            var name = getCurrentName(currentcard);
-            var hp = getCurrentHp(currentcard);
-            console.log(name, hp);
-            $("#turn-name").text(name);
-            $("#turn-hp").text(hp);
+            setStats(currentcard);
             setTimeout(function() {
                 $("#hide-combat").fadeIn("slow");
             }, 1000);
