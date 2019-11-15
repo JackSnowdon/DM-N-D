@@ -113,4 +113,19 @@ $(document).ready(function() {
 
     });
 
+
+    $("#attack-button").click(function() {
+        //$("#attack-button").attr("disabled", true);
+        var list = $(".card-deck").find(".card-title");
+        var len = list.length
+        console.log(list[0].innerHTML)
+        console.log(len)
+        for (var i = 0; i < len; i++) {
+            console.log(list[i]);
+            console.log(list[i].innerHTML)
+        }
+
+        
+    });
+
 });

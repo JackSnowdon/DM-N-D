@@ -30,8 +30,8 @@ if os.getenv('HOSTNAME') == 'django-n-d.herokuapp.com':
 else:
     if os.path.exists('env.py'):
         import env
-    ALLOWED_HOSTS = ['118708f72ede48f3b521db09fe0a0377.vfs.cloud9.us-east-1.amazonaws.com']
-    SECRET_KEY = os.environ.get('SECRET_KEY')
+    ALLOWED_HOSTS = []
+    SECRET_KEY = ["suzd_)whpd5*+lf5h$5+b#jws+28nscr&zq!8u*ws!&uo8^8x8="]
     DEBUG = True
     DATABASES = {
     'default': {
