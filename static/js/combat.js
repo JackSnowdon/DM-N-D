@@ -118,12 +118,23 @@ $(document).ready(function () {
         //$("#attack-button").attr("disabled", true);
         var list = $(".card-deck").find(".card-title");
         var len = list.length
-        console.log(list[0].innerHTML)
+        currentcard = getCurrentCard();
+        name = getCurrentName(currentcard)
         console.log(len);
 
+        var targets = []
+
         for (i = 0; i < len; i++) {
-            console.log(list[i].innerHTML)
+            if (list[i].innerHTML == name) {
+                //pass
+            } else {
+                targets.push(list[i].innerHTML)
+            }
         }
+
+        console.log(name)
+
+        console.log(targets)
 
     });
 
