@@ -15,5 +15,5 @@ class CombatMember(models.Model):
     current_hp = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(5000)])
     
     def __str__(self):
-        return self.player.name
+        return self.hero.name
         

@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
     var decksize, index, repeat, currentcard;
 
@@ -44,7 +44,7 @@ $(document).ready(function() {
     }
 
 
-    $("#start-combat").click(function() {
+    $("#start-combat").click(function () {
 
         repeat = 0;
         decksize = getDeckSize();
@@ -53,12 +53,12 @@ $(document).ready(function() {
         $("#start-combat").hide();
         $("#delete-all-combat").hide();
         $("#add-hero").hide();
-        setTimeout(function() {
+        setTimeout(function () {
             startCombat();
             currentcard = getCurrentCard();
             console.log(currentcard);
             setStats(currentcard);
-            setTimeout(function() {
+            setTimeout(function () {
                 $("#hide-combat").fadeIn("slow");
             }, 1000);
 
@@ -66,7 +66,7 @@ $(document).ready(function() {
     });
 
 
-    $("#next-button").click(function() {
+    $("#next-button").click(function () {
         $("#next-button").attr("disabled", true);
 
         $("#turn-owner").fadeOut();
@@ -82,7 +82,7 @@ $(document).ready(function() {
         removecard.removeClass("select-box");
 
         if (decksize > index) {
-            setTimeout(function() {
+            setTimeout(function () {
                 var currentcard = $(".card").eq(index);
                 currentcard.addClass("select-box");
                 $("#next-button").attr("disabled", false);
@@ -93,17 +93,17 @@ $(document).ready(function() {
         }
         else {
             $("#next-button").fadeOut("slow");
-            setTimeout(function() {
+            setTimeout(function () {
                 $("#next-round").show();
                 $("#next-button").attr("disabled", false);
             }, 1000);
         }
     });
 
-    $("#next-round").click(function() {
+    $("#next-round").click(function () {
         $("#next-round").hide();
         var index = $(".card").index(".card") + 1;
-        setTimeout(function() {
+        setTimeout(function () {
             startCombat();
             currentcard = getCurrentCard();
             console.log(currentcard);
@@ -114,18 +114,17 @@ $(document).ready(function() {
     });
 
 
-    $("#attack-button").click(function() {
+    $("#attack-button").click(function () {
         //$("#attack-button").attr("disabled", true);
         var list = $(".card-deck").find(".card-title");
         var len = list.length
         console.log(list[0].innerHTML)
-        console.log(len)
-        for (var i = 0; i < len; i++) {
-            console.log(list[i]);
+        console.log(len);
+
+        for (i = 0; i < len; i++) {
             console.log(list[i].innerHTML)
         }
 
-        
     });
 
 });

@@ -1,4 +1,5 @@
-{% extends 'base.html' %} {% load static from staticfiles %} {% block page_title %} Start Combat {% endblock %} {% block content %}
+{% extends 'base.html' %} {% load static from staticfiles %} {% block page_title %} Start Combat {% endblock %}
+{% block content %}
 <div class="row">
     <div class="col-12">
         <div class="jumbotron text-center">
@@ -9,7 +10,97 @@
     </div>
 </div>
 
+<div class="row">
+    <div class="col-12 text-center">
+        <a href="{% url 'combat_home' %}">
+            <img src="{% static 'imgs/return-arrow.png' %}" alt="Training" class="img-fluid img-button">
+        </a>
+    </div>
+</div>
 
-{% endblock %} {% block script_js %}
+<br>
+
+
+<div class="card-deck text-center">
+    {% for p in party %}
+    <div class="col-12 col-md-4">
+        <div class="card">
+            <div class="card-body">
+                {% if p.hero.alignment == "Player" %}
+                <h3 class="card-title boldest player-party">{{ p.hero.name }}</h3>
+                {% else %}
+                <h3 class="card-title boldest npc-party">{{ p.hero.name }}</h3>
+                {% endif %} {% if p.current_hp > p.hero.max_hp %}
+                <p><span class="boldest">HP:</span> <span id="card-hp">{{ p.hero.max_hp }}</span>/<span
+                        id="card-max-hp">{{ p.hero.max_hp }}</span></p>
+                {% else %}
+                <p><span class="boldest">HP:</span> <span id="card-hp">{{ p.current_hp }}</span>/<span
+                        id="card-max-hp">{{ p.hero.max_hp }}</span></p>
+                {% endif %}
+                <p class="card-text"><span class="boldest">Init:</span> {{ p.initiative }}</p>
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-6">
+                        <form class="" method="post" action="{% url 'delete_hero_int' p.hero.id %}">
+                            {% csrf_token %}
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-warning" type="submit">Delete</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-6">
+                        <a href="{% url 'edit_hero' p.hero.id  %}" role="button" class="btn btn-warning"
+                            aria-disabled="false">Edit Stats</a>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-12">
+                        <a class="btn btn-warning" href="{% url 'single_member' pk=p.pk %}" role="button"
+                            aria-disabled="false">View Stats</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="combat-box text-center" id="hide-combat">
+            <div class="combat-inner">
+                <h3 id="turn-owner">It's <span id="turn-name"></span> Turn!</h3>
+                <h3 id="turn-health">Current HP: <span id="turn-hp"></span>/<span id="turn-max-hp"></span></h3>
+            </div>
+            <div class="combat-buttons">
+                <div class="row">
+                    <div class="col-3"><button class="btn btn-warning" id="attack-button"
+                            aria-disabled="false">Attack</button></div>
+                    <div class="col-3"><button class="btn btn-warning" id="move-button"
+                            aria-disabled="false">Move</button></div>
+                    <div class="col-3"><button class="btn btn-warning" id="spell-button"
+                            aria-disabled="false">Spell</button></div>
+                    <div class="col-3"><button class="btn btn-warning" id="item-button"
+                            aria-disabled="false">Item</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<div class="col-12">
+    <div class="text-center">
+        <button id="start-combat" class="btn btn-warning" aria-disabled="false">Start Combat</button>
+        <button id="next-button" class="btn btn-warning" aria-disabled="false">Next</button>
+        <button id="next-round" class="btn btn-warning" aria-disabled="false">Next Round</button>
+    </div>
+</div>
+<br> {% endblock %} {% block script_js %}
 <script type="text/javascript" src="{% static 'js/combat.js' %}"></script>
 {% endblock %}

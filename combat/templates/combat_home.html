@@ -69,33 +69,10 @@
 </div>
 <br>
 
-<div class="row">
-    <div class="col-12">
-        <div class="combat-box text-center" id="hide-combat">
-            <div class="combat-inner">
-                <h3 id="turn-owner">It's <span id="turn-name"></span> Turn!</h3>
-                <h3 id="turn-health">Current HP: <span id="turn-hp"></span>/<span id="turn-max-hp"></span></h3>
-            </div>
-            <div class="combat-buttons">
-                <div class="row">
-                    <div class="col-3"><button class="btn btn-warning" id="attack-button" aria-disabled="false">Attack</button></div>
-                    <div class="col-3"><button class="btn btn-warning" id="move-button" aria-disabled="false">Move</button></div>
-                    <div class="col-3"><button class="btn btn-warning" id="spell-button" aria-disabled="false">Spell</button></div>
-                    <div class="col-3"><button class="btn btn-warning" id="item-button" aria-disabled="false">Item</button></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <br>
 <div class="col-12">
     <div class="text-center">
-        <button id="start-combat" class="btn btn-warning" aria-disabled="false">Start Combat</button>
-        <button id="next-button" class="btn btn-warning" aria-disabled="false">Next</button>
-        <button id="next-round" class="btn btn-warning" aria-disabled="false">Next Round</button>
+        <a href="{% url 'start_combat' %}"><button id="start-combat" class="btn btn-warning" aria-disabled="false">Start Combat</button></a>
     </div>
 </div>
-<br> {% endblock %} {% block script_js %}
-<script type="text/javascript" src="{% static 'js/combat.js' %}"></script>
-{% endblock %}
+<br> {% endblock %}

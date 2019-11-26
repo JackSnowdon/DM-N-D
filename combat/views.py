@@ -60,6 +60,10 @@ def edit_hero(request, pk):
     else:
         hero_form = EditCombat(instance=hero)
     return render(request, 'edit_hero.html', {'hero_form': hero_form, 'hero':hero})
+
+def start_combat(request):
+    party = CombatMember.objects.order_by('-initiative')
+    return render(request, 'start_combat.html', {'party': party})
     
 class SingleCombatMember(DetailView):
     model = CombatMember
