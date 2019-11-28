@@ -153,9 +153,19 @@ $(document).ready(function () {
         getTargets()
         console.log("Targets", targets)
 
+
         $.each(targets, function(index, value){
-            $("#targets").append('<li><button class="btn btn-warning" id="' + value + '">' + value + '</button></li>');
+            $("#targets").append('<li><button class="btn btn-warning attack-action" id="' + index + '">' + value + '</button></li>' + '<br>');
         });
+
+        $(".attack-action").click(function() {
+            
+
+            slot = this.id;
+            console.log(targets[slot])
+            alert(targets[slot]);
+          });
+        
 
         $("#targets").fadeIn();
 
