@@ -150,22 +150,16 @@ $(document).ready(function () {
     $("#attack-button").click(function () {
         //$("#attack-button").attr("disabled", true);
         $("#targets").empty();
-
         getTargets()
         console.log("Targets", targets)
 
         $.each(targets, function(index, value){
-            $("#targets").append('<li>' + value + '</li>');
+            $("#targets").append('<li><button class="btn btn-warning" id="' + value + '">' + value + '</button></li>');
         });
 
         $("#targets").fadeIn();
 
-
-
-
     });
-
-    
 
 
 

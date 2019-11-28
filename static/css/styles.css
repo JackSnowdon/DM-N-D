@@ -124,6 +124,10 @@
     display: none;
 }
 
+.target-list {
+    list-style-type: none;
+}
+
 /* Breaks */
 
 
