@@ -1,6 +1,11 @@
 $(document).ready(function () {
 
+    // Init Vars
+
     var decksize, index, repeat, currentcard;
+    var targets = [];
+
+    // Helper Functions
 
     function getDeckSize() {
         return $(".card").length;
@@ -43,6 +48,30 @@ $(document).ready(function () {
         $(".combat-buttons").fadeIn();
     }
 
+    function getTargets() {
+        empty();
+        var list = $(".card-deck").find(".card-title");
+        var len = list.length
+        currentcard = getCurrentCard();
+        name = getCurrentName(currentcard)
+        for (i = 0; i < len; i++) {
+            if (list[i].innerHTML == name) {
+                //pass
+            } else {
+                targets.push(list[i].innerHTML)
+            }
+        }
+        return targets
+    }
+
+    function empty() {
+        //empty your array
+        targets = [];
+    }
+    
+
+    // Combat Flow
+
 
     $("#start-combat").click(function () {
 
@@ -72,6 +101,7 @@ $(document).ready(function () {
         $("#turn-owner").fadeOut();
         $("#turn-health").fadeOut();
         $(".combat-buttons").fadeOut();
+        $("#targets").fadeOut();
 
         if (repeat > 0) {
             index = 1;
@@ -113,29 +143,30 @@ $(document).ready(function () {
 
     });
 
+    
+    // Combat Moves
+
 
     $("#attack-button").click(function () {
         //$("#attack-button").attr("disabled", true);
-        var list = $(".card-deck").find(".card-title");
-        var len = list.length
-        currentcard = getCurrentCard();
-        name = getCurrentName(currentcard)
-        console.log(len);
+        $("#targets").empty();
 
-        var targets = []
+        getTargets()
+        console.log("Targets", targets)
 
-        for (i = 0; i < len; i++) {
-            if (list[i].innerHTML == name) {
-                //pass
-            } else {
-                targets.push(list[i].innerHTML)
-            }
-        }
+        $.each(targets, function(index, value){
+            $("#targets").append('<li>' + value + '</li>');
+        });
 
-        console.log(name)
+        $("#targets").fadeIn();
 
-        console.log(targets)
+
+
 
     });
+
+    
+
+
 
 });

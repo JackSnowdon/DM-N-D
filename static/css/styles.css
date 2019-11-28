@@ -118,6 +118,7 @@
     position: fixed;
 }
 
+#targets,
 #next-round,
 #next-button {
     display: none;
