@@ -114,6 +114,10 @@
     border-color: red;
 }
 
+.attacked-box {
+    border-color: green;
+}
+
 .fixed {
     position: fixed;
 }

@@ -31,10 +31,10 @@
                 {% else %}
                 <h3 class="card-title boldest npc-party">{{ p.hero.name }}</h3>
                 {% endif %} {% if p.current_hp > p.hero.max_hp %}
-                <p><span class="boldest">HP:</span> <span id="card-hp">{{ p.hero.max_hp }}</span>/<span
+                <p><span class="boldest">HP:</span> <span id="card-hp" class="hp-meter">{{ p.hero.max_hp }}</span>/<span
                         id="card-max-hp">{{ p.hero.max_hp }}</span></p>
                 {% else %}
-                <p><span class="boldest">HP:</span> <span id="card-hp">{{ p.current_hp }}</span>/<span
+                <p><span class="boldest">HP:</span> <span id="card-hp" class="hp-meter" >{{ p.current_hp }}</span>/<span
                         id="card-max-hp">{{ p.hero.max_hp }}</span></p>
                 {% endif %}
                 <p class="card-text"><span class="boldest">Init:</span> {{ p.initiative }}</p>
@@ -88,30 +88,62 @@
                     <div class="col-3"><button class="btn btn-warning" id="item-button"
                             aria-disabled="false">Item</button></div>
                 </div>
-                <div class="row">
+                <div class="target-row">
                     <div class="col-12">
-                        <ul class="target-list">
-                            <div id="targets">
+                        <div id="targets">
 
 
-
-                            </div>
-                        </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<br>
-<div class="col-12">
-    <div class="text-center">
-        <button id="start-combat" class="btn btn-warning" aria-disabled="false">Start Combat</button>
-        <button id="next-button" class="btn btn-warning" aria-disabled="false">Next</button>
-        <button id="next-round" class="btn btn-warning" aria-disabled="false">Next Round</button>
+
+
+    <!-- Attack Model -->
+
+    <div class="modal" id="attackModal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+          
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Attack</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+          
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <div id="attack-body"></div>
+                  <div id="testdata"></div>
+                </div>
+          
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-success" data-dismiss="modal" id="attack-confirm">Attack</button>
+                </div>
+          
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+    <br>
+    <br>
+    <div class="col-12">
+        <div class="text-center">
+            <button id="start-combat" class="btn btn-warning" aria-disabled="false">Start Combat</button>
+            <button id="next-button" class="btn btn-warning" aria-disabled="false">Next</button>
+            <button id="next-round" class="btn btn-warning" aria-disabled="false">Next Round</button>
+        </div>
     </div>
-</div>
-<br> {% endblock %} {% block script_js %}
-<script type="text/javascript" src="{% static 'js/combat.js' %}"></script>
-{% endblock %}
+    <br> {% endblock %} {% block script_js %}
+    <script type="text/javascript" src="{% static 'js/combat.js' %}"></script>
+    {% endblock %}

@@ -61,7 +61,7 @@ $(document).ready(function () {
                 targets.push(list[i].innerHTML)
             }
         }
-        return targets
+        return targets, list
     }
 
     function empty() {
@@ -114,6 +114,7 @@ $(document).ready(function () {
         if (decksize > index) {
             setTimeout(function () {
                 var currentcard = $(".card").eq(index);
+                console.log(currentcard)    
                 currentcard.addClass("select-box");
                 $("#next-button").attr("disabled", false);
                 console.log(currentcard);
@@ -152,25 +153,44 @@ $(document).ready(function () {
         $("#targets").empty();
         getTargets()
         console.log("Targets", targets)
+        
 
 
         $.each(targets, function(index, value){
-            $("#targets").append('<li><button class="btn btn-warning attack-action" id="' + index + '">' + value + '</button></li>' + '<br>');
+            $("#targets").append('<span><button class="btn btn-warning attack-action"  data-toggle="modal" data-target="#attackModal" id="' + index + '">' + value + '</button>' + '</span><br>');
         });
 
         $(".attack-action").click(function() {
+            slot = this.id;
+            attacked = targets[slot]
+            console.log(attacked)
+            var cardlist = $(".card-deck").find(".card-title");
+            var len = cardlist.length
+            for (i = 0; i < len; i++) {
+                if (cardlist[i].innerHTML == attacked) {
+                    var getcard = cardlist.parent().parent()
+                    var thiscard = getcard[i]
+                    $(thiscard).addClass("attacked-box");
+                    var targethp = $(".attacked-box").find(".hp-meter").html()     
+                    console.log(targethp)
+                } else {
+                    // pass 
+                }
+            }
+
+            setTimeout(function () {
+                $(".attacked-box").removeClass("attacked-box"); 
+            }, 1000);
+            
+            
+            $("#attack-body").html('<h3>' + name + " attacks " + attacked + '</h3>')
+            $('#testdata').text(targethp)
+
             
 
-            slot = this.id;
-            console.log(targets[slot])
-            alert(targets[slot]);
+            $("#attack-confirm").click(function() { 
+            })
           });
-        
-
         $("#targets").fadeIn();
-
     });
-
-
-
 });
