@@ -35,8 +35,8 @@ $(document).ready(function () {
         return $(x).find(y).text();
     }
 
-    function getAllStats(x) {        
-        return {str : getStat(x, ".str-stat"), dex : getStat(x, ".dex-stat"), int : getStat(x, ".int-stat"), wis : getStat(x, ".wis-stat"), con : getStat(x, ".con-stat"), cha : getStat(x, ".cha-stat")};
+    function getAllStats(x) {
+        return { str: getStat(x, ".str-stat"), dex: getStat(x, ".dex-stat"), int: getStat(x, ".int-stat"), wis: getStat(x, ".wis-stat"), con: getStat(x, ".con-stat"), cha: getStat(x, ".cha-stat") };
     }
 
     function startCombat() {
@@ -70,6 +70,10 @@ $(document).ready(function () {
             }
         }
         return targets, list
+    }
+
+    function getDiceRoll(x) {
+        return Math.floor(Math.random() * x) + 1;
     }
 
     function empty() {
@@ -175,12 +179,10 @@ $(document).ready(function () {
                     var getcard = cardlist.parent().parent()
                     var thiscard = getcard[i]
                     $(thiscard).addClass("attacked-box");
-
                     var attackstats = getAllStats(currentcard);
                     var defendstats = getAllStats(thiscard);
-                    console.log("A:", attackstats, "D:", defendstats)
                     var targethp = $(".attacked-box").find(".hp-meter").html()
-                    console.log(targethp)
+                    var die = getDiceRoll(6);
                 } else {
                     // pass 
                 }
@@ -191,8 +193,9 @@ $(document).ready(function () {
             }, 1000);
 
 
-            $("#attack-body").html('<h3>' + name + " attacks " + attacked + '</h3>')
-            $('#testdata').text(targethp)
+            $("#attack-body").html("<h3>" + name + " attacks " + attacked + "</h3>");
+            $("#testdata").html("<span>" + name + "'s strengh is " + attackstats.str + " Add A Roll: </span>");
+            $("#rolls").html("<span>" + die +  "</span>")
 
 
 
