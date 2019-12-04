@@ -34,34 +34,32 @@
                 <p><span class="boldest">HP:</span> <span id="card-hp" class="hp-meter">{{ p.hero.max_hp }}</span>/<span
                         id="card-max-hp">{{ p.hero.max_hp }}</span></p>
                 {% else %}
-                <p><span class="boldest">HP:</span> <span id="card-hp" class="hp-meter" >{{ p.current_hp }}</span>/<span
+                <p><span class="boldest">HP:</span> <span id="card-hp" class="hp-meter">{{ p.current_hp }}</span>/<span
                         id="card-max-hp">{{ p.hero.max_hp }}</span></p>
                 {% endif %}
                 <p class="card-text"><span class="boldest">Init:</span> {{ p.initiative }}</p>
             </div>
             <div class="card-footer">
-                <div class="row">
-                    <div class="col-6">
-                        <form class="" method="post" action="{% url 'delete_hero_int' p.hero.id %}">
-                            {% csrf_token %}
-                            <div class="input-group">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-warning" type="submit">Delete</button>
-                                </span>
-                            </div>
-                        </form>
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <p><span class="boldest">Str</span></br><span class="str-stat">{{ p.hero.strengh }}</span></p>
                     </div>
-                    <div class="col-6">
-                        <a href="{% url 'edit_hero' p.hero.id  %}" role="button" class="btn btn-warning"
-                            aria-disabled="false">Edit Stats</a>
+                    <div class="col-md-4">
+                        <p><span class="boldest">Dex</span></br><span class="dex-stat">{{ p.hero.dex }}</span></p>
                     </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-12">
-                        <a class="btn btn-warning" href="{% url 'single_member' pk=p.pk %}" role="button"
-                            aria-disabled="false">View Stats</a>
+                    <div class="col-md-4">
+                        <p><span class="boldest">Int</span></br><span class="int-stat">{{ p.hero.intel }}</span></p>
                     </div>
+                    <div class="col-md-4">
+                        <p><span class="boldest">Wis</span></br><span class="wis-stat">{{ p.hero.wisdom }}</span></p>
+                    </div>
+                    <div class="col-md-4">
+                        <p><span class="boldest">Con</span></br><span class="con-stat">{{ p.hero.con }}</span></p>
+                    </div>
+                    <div class="col-md-4">
+                        <p><span class="boldest">Cha</span></br><span class="cha-stat">{{ p.hero.charisma }}</span></p>
+                    </div>
+                    <br>
                 </div>
             </div>
         </div>
@@ -90,7 +88,9 @@
                 </div>
                 <div class="target-row">
                     <div class="col-12">
+                        <br>
                         <div id="targets">
+                            <br>
 
 
                         </div>
@@ -105,30 +105,31 @@
     <!-- Attack Model -->
 
     <div class="modal" id="attackModal">
-            <div class="modal-dialog">
-              <div class="modal-content">
-          
+        <div class="modal-dialog">
+            <div class="modal-content">
+
                 <!-- Modal Header -->
                 <div class="modal-header">
-                  <h4 class="modal-title">Attack</h4>
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Attack</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-          
+
                 <!-- Modal body -->
                 <div class="modal-body">
-                  <div id="attack-body"></div>
-                  <div id="testdata"></div>
+                    <div id="attack-body"></div>
+                    <div id="testdata"></div>
                 </div>
-          
+
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-success" data-dismiss="modal" id="attack-confirm">Attack</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="cancel-confirm">Close</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal"
+                        id="attack-confirm">Attack</button>
                 </div>
-          
-              </div>
+
             </div>
-          </div>
+        </div>
+    </div>
 
 
 

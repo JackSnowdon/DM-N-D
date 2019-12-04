@@ -113,8 +113,7 @@ $(document).ready(function () {
 
         if (decksize > index) {
             setTimeout(function () {
-                var currentcard = $(".card").eq(index);
-                console.log(currentcard)    
+                var currentcard = $(".card").eq(index);   
                 currentcard.addClass("select-box");
                 $("#next-button").attr("disabled", false);
                 console.log(currentcard);
@@ -152,12 +151,9 @@ $(document).ready(function () {
         //$("#attack-button").attr("disabled", true);
         $("#targets").empty();
         getTargets()
-        console.log("Targets", targets)
         
-
-
         $.each(targets, function(index, value){
-            $("#targets").append('<span><button class="btn btn-warning attack-action"  data-toggle="modal" data-target="#attackModal" id="' + index + '">' + value + '</button>' + '</span><br>');
+            $("#targets").append('<span><button class="btn btn-warning attack-action" data-toggle="modal" data-target="#attackModal" id="' + index + '">' + value + '</button>' + '</span>');
         });
 
         $(".attack-action").click(function() {
@@ -189,7 +185,11 @@ $(document).ready(function () {
             
 
             $("#attack-confirm").click(function() { 
+                //alert("Attacked!")
+                
             })
+
+            
           });
         $("#targets").fadeIn();
     });

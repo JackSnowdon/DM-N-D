@@ -118,6 +118,10 @@
     border-color: green;
 }
 
+.attack-action {
+    margin: 10px;
+}
+
 .fixed {
     position: fixed;
 }
