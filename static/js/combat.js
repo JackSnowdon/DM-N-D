@@ -31,6 +31,14 @@ $(document).ready(function () {
         return $(x).find("#card-max-hp").text();
     }
 
+    function getStat(x, y) {
+        return $(x).find(y).text();
+    }
+
+    function getAllStats(x) {        
+        return {str : getStat(x, ".str-stat"), dex : getStat(x, ".dex-stat"), int : getStat(x, ".int-stat"), wis : getStat(x, ".wis-stat"), con : getStat(x, ".con-stat"), cha : getStat(x, ".cha-stat")};
+    }
+
     function startCombat() {
         $("#next-button").fadeIn("slow");
         $(".card:first").addClass("select-box");
@@ -68,7 +76,7 @@ $(document).ready(function () {
         //empty your array
         targets = [];
     }
-    
+
 
     // Combat Flow
 
@@ -113,7 +121,7 @@ $(document).ready(function () {
 
         if (decksize > index) {
             setTimeout(function () {
-                var currentcard = $(".card").eq(index);   
+                var currentcard = $(".card").eq(index);
                 currentcard.addClass("select-box");
                 $("#next-button").attr("disabled", false);
                 console.log(currentcard);
@@ -143,7 +151,7 @@ $(document).ready(function () {
 
     });
 
-    
+
     // Combat Moves
 
 
@@ -151,12 +159,12 @@ $(document).ready(function () {
         //$("#attack-button").attr("disabled", true);
         $("#targets").empty();
         getTargets()
-        
-        $.each(targets, function(index, value){
+
+        $.each(targets, function (index, value) {
             $("#targets").append('<span><button class="btn btn-warning attack-action" data-toggle="modal" data-target="#attackModal" id="' + index + '">' + value + '</button>' + '</span>');
         });
 
-        $(".attack-action").click(function() {
+        $(".attack-action").click(function () {
             slot = this.id;
             attacked = targets[slot]
             console.log(attacked)
@@ -167,7 +175,11 @@ $(document).ready(function () {
                     var getcard = cardlist.parent().parent()
                     var thiscard = getcard[i]
                     $(thiscard).addClass("attacked-box");
-                    var targethp = $(".attacked-box").find(".hp-meter").html()     
+
+                    var attackstats = getAllStats(currentcard);
+                    var defendstats = getAllStats(thiscard);
+                    console.log("A:", attackstats, "D:", defendstats)
+                    var targethp = $(".attacked-box").find(".hp-meter").html()
                     console.log(targethp)
                 } else {
                     // pass 
@@ -175,22 +187,22 @@ $(document).ready(function () {
             }
 
             setTimeout(function () {
-                $(".attacked-box").removeClass("attacked-box"); 
+                $(".attacked-box").removeClass("attacked-box");
             }, 1000);
-            
-            
+
+
             $("#attack-body").html('<h3>' + name + " attacks " + attacked + '</h3>')
             $('#testdata').text(targethp)
 
-            
 
-            $("#attack-confirm").click(function() { 
+
+            $("#attack-confirm").click(function () {
                 //alert("Attacked!")
-                
+
             })
 
-            
-          });
+
+        });
         $("#targets").fadeIn();
     });
 });
