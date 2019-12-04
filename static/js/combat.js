@@ -4,7 +4,7 @@ $(document).ready(function () {
 
     var decksize, index, repeat, currentcard;
     var targets = [];
-    var weplist = [];   
+    var weplist = [];
 
     // Helper Functions
 
@@ -58,14 +58,27 @@ $(document).ready(function () {
 
     function getWeapons(x) {
         weplist = [];
+
         var allweps = $(x).find(".single-weapon");
         var len = allweps.length;
         for (a = 0; a < len; a++) {
             var wepname = $(allweps[a]).find(".weapon-name").text();
             var wepdie = $(allweps[a]).find(".weapon-die").text();
-            var wep = {name: wepname, die: wepdie}
+            var wep = { name: wepname, die: wepdie }
             weplist.push(wep)
         }
+        // var weplen = weplist.length;
+        //for (b = 0; b < weplen; b++) {
+        //   console.log(weplist)
+        //  console.log(weplist[b].name)
+        // $(".weapon-list").html("<span> Weapon Name: " + weplist[b].name +  "</span>")
+         
+
+
+        $.each(weplist, function (index, wep) {
+            $(".weapon-list").append('<span><button class="btn btn-warning" data-toggle="modal"  id="' + wepname + '">' + wep.name + '</button>' + wep.die + '</span>');
+            $(".weapon-list").fadeIn();
+        });
     }
 
     function getDiceRoll(x) {
@@ -121,6 +134,7 @@ $(document).ready(function () {
 
 
     $("#next-button").click(function () {
+        $(".weapon-list").empty()
         $("#next-button").attr("disabled", true);
 
         $("#turn-owner").fadeOut();
@@ -156,6 +170,7 @@ $(document).ready(function () {
     });
 
     $("#next-round").click(function () {
+        $(".weapon-list").empty()
         $("#next-round").hide();
         var index = $(".card").index(".card") + 1;
         setTimeout(function () {
@@ -173,13 +188,16 @@ $(document).ready(function () {
 
 
     $("#attack-button").click(function () {
-        //$("#attack-button").attr("disabled", true);
+        $(".attack-action").attr("disabled", false);
         $("#targets").empty();
         getTargets()
 
         $.each(targets, function (index, value) {
             $("#targets").append('<span><button class="btn btn-warning attack-action" data-toggle="modal" data-target="#attackModal" id="' + index + '">' + value + '</button>' + '</span>');
         });
+
+        getWeapons(currentcard);
+        console.log(weplist);
 
         $(".attack-action").click(function () {
             slot = this.id;
@@ -195,8 +213,6 @@ $(document).ready(function () {
                     var attackstats = getAllStats(currentcard);
                     var defendstats = getAllStats(thiscard);
                     var targethp = $(".attacked-box").find(".hp-meter").html()
-                    getWeapons(currentcard);
-                    console.log(weplist)
                 } else {
                     // pass 
                 }
@@ -208,17 +224,13 @@ $(document).ready(function () {
 
 
             $("#attack-body").html("<h3>" + name + " attacks " + attacked + "</h3>");
-            $("#testdata").html("<span>" + name + "'s strengh is " + attackstats.str + " Add A Roll: </span>");
-            // $("#rolls").html("<span>" + die +  "</span>")
-
+            $("#testdata").html("<span>" + name + "'s strengh is " + attackstats.str + " Add A Roll: </span>");     
 
 
             $("#attack-confirm").click(function () {
-                //alert("Attacked!")
-
+                $(".weapon-list").fadeOut();
+                $(".attack-action").attr("disabled", true);
             })
-
-
         });
         $("#targets").fadeIn();
     });

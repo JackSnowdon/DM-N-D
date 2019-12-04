@@ -66,7 +66,10 @@
                 {% for weapon in p.hero.weapons.all %}
                 <div class="single-weapon">
                     <span class="weapon-name">{{ weapon.name }}</span>
-                    <span class="weapon-die">{{ weapon.die }}</span>
+                    <span class="weapon-die"> {% for d in weapon.die.all %}
+                        {{ d.number_of_die }}{{ d.die }}
+                        {% endfor %}
+                    </span>
                 </div>
                 {% endfor %}
             </span>
@@ -100,7 +103,8 @@
                         <br>
                         <div id="targets">
                             <br>
-
+                        </div>
+                        <div class="weapon-list">
 
                         </div>
                     </div>
