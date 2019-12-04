@@ -3,7 +3,8 @@ $(document).ready(function () {
     // Init Vars
 
     var decksize, index, repeat, currentcard;
-    var targets = [];   
+    var targets = [];
+    var weplist = [];   
 
     // Helper Functions
 
@@ -56,18 +57,15 @@ $(document).ready(function () {
     }
 
     function getWeapons(x) {
-        var weplist = $(x).find(".single-weapon");
-        console.log(weplist)
-        var len = weplist.length;
-        for (a = 0; a < len; i++) {
-            var wepname = $(weplist[a]).find(".weapon-name").text();
-            var wepdie = $(weplist[a]).find(".weapon-die").text();
+        weplist = [];
+        var allweps = $(x).find(".single-weapon");
+        var len = allweps.length;
+        for (a = 0; a < len; a++) {
+            var wepname = $(allweps[a]).find(".weapon-name").text();
+            var wepdie = $(allweps[a]).find(".weapon-die").text();
+            var wep = {name: wepname, die: wepdie}
+            weplist.push(wep)
         }
-        
-        
-
-
-
     }
 
     function getDiceRoll(x) {
@@ -197,8 +195,8 @@ $(document).ready(function () {
                     var attackstats = getAllStats(currentcard);
                     var defendstats = getAllStats(thiscard);
                     var targethp = $(".attacked-box").find(".hp-meter").html()
-                    var weaponchoice = getWeapons(currentcard);
-                    console.log(weaponchoice.wepname, weaponchoice.wepdie)
+                    getWeapons(currentcard);
+                    console.log(weplist)
                 } else {
                     // pass 
                 }
