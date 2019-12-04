@@ -6,7 +6,7 @@ class PlayerForm(forms.ModelForm):
 
     class Meta:
         model = Base
-        exclude = ['alignment']
+        exclude = ['alignment', 'weapons']
         labels = {
             "max_hp": "Max HP",
             "dex": "Dexterity",
@@ -18,7 +18,7 @@ class EnemyForm(forms.ModelForm):
 
     class Meta:
         model = Base
-        exclude = ['alignment']
+        exclude = ['alignment', 'weapons']
         labels = {
             "max_hp": "Max HP",
             "dex": "Dexterity",

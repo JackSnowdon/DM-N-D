@@ -62,8 +62,17 @@
                     <br>
                 </div>
             </div>
+            <span class="weapons-row">
+                {% for weapon in p.hero.weapons.all %}
+                <div class="single-weapon">
+                    <span class="weapon-name">{{ weapon.name }}</span>
+                    <span class="weapon-die">{{ weapon.die }}</span>
+                </div>
+                {% endfor %}
+            </span>
         </div>
     </div>
+
     {% endfor %}
 </div>
 

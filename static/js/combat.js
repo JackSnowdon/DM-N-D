@@ -3,7 +3,7 @@ $(document).ready(function () {
     // Init Vars
 
     var decksize, index, repeat, currentcard;
-    var targets = [];
+    var targets = [];   
 
     // Helper Functions
 
@@ -39,6 +39,41 @@ $(document).ready(function () {
         return { str: getStat(x, ".str-stat"), dex: getStat(x, ".dex-stat"), int: getStat(x, ".int-stat"), wis: getStat(x, ".wis-stat"), con: getStat(x, ".con-stat"), cha: getStat(x, ".cha-stat") };
     }
 
+    function getTargets() {
+        empty();
+        var list = $(".card-deck").find(".card-title");
+        var len = list.length
+        currentcard = getCurrentCard();
+        name = getCurrentName(currentcard)
+        for (i = 0; i < len; i++) {
+            if (list[i].innerHTML == name) {
+                //pass
+            } else {
+                targets.push(list[i].innerHTML)
+            }
+        }
+        return targets
+    }
+
+    function getWeapons(x) {
+        var weplist = $(x).find(".single-weapon");
+        console.log(weplist)
+        var len = weplist.length;
+        for (a = 0; a < len; i++) {
+            var wepname = $(weplist[a]).find(".weapon-name").text();
+            var wepdie = $(weplist[a]).find(".weapon-die").text();
+        }
+        
+        
+
+
+
+    }
+
+    function getDiceRoll(x) {
+        return Math.floor(Math.random() * x) + 1;
+    }
+
     function startCombat() {
         $("#next-button").fadeIn("slow");
         $(".card:first").addClass("select-box");
@@ -54,26 +89,6 @@ $(document).ready(function () {
         $("#turn-owner").fadeIn();
         $("#turn-health").fadeIn();
         $(".combat-buttons").fadeIn();
-    }
-
-    function getTargets() {
-        empty();
-        var list = $(".card-deck").find(".card-title");
-        var len = list.length
-        currentcard = getCurrentCard();
-        name = getCurrentName(currentcard)
-        for (i = 0; i < len; i++) {
-            if (list[i].innerHTML == name) {
-                //pass
-            } else {
-                targets.push(list[i].innerHTML)
-            }
-        }
-        return targets, list
-    }
-
-    function getDiceRoll(x) {
-        return Math.floor(Math.random() * x) + 1;
     }
 
     function empty() {
@@ -182,7 +197,8 @@ $(document).ready(function () {
                     var attackstats = getAllStats(currentcard);
                     var defendstats = getAllStats(thiscard);
                     var targethp = $(".attacked-box").find(".hp-meter").html()
-                    var die = getDiceRoll(6);
+                    var weaponchoice = getWeapons(currentcard);
+                    console.log(weaponchoice.wepname, weaponchoice.wepdie)
                 } else {
                     // pass 
                 }
@@ -195,7 +211,7 @@ $(document).ready(function () {
 
             $("#attack-body").html("<h3>" + name + " attacks " + attacked + "</h3>");
             $("#testdata").html("<span>" + name + "'s strengh is " + attackstats.str + " Add A Roll: </span>");
-            $("#rolls").html("<span>" + die +  "</span>")
+            // $("#rolls").html("<span>" + die +  "</span>")
 
 
 

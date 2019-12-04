@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator 
+from equipment.models import *
 
 # Create your models here.
 
@@ -21,6 +22,7 @@ class Base(models.Model):
     wisdom = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(30)])
     con = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(30)])
     charisma = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(30)])
+    weapons = models.ManyToManyField(Weapon)
     
     
     def __str__(self):

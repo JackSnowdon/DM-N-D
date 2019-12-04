@@ -128,7 +128,8 @@
 
 #targets,
 #next-round,
-#next-button {
+#next-button,
+.weapons-row{
     display: none;
 }
 
