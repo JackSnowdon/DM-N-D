@@ -62,12 +62,12 @@ $(document).ready(function () {
         var len = allweps.length;
         for (a = 0; a < len; a++) {
             var wepname = $(allweps[a]).find(".weapon-name").text();
-            var wepdie = $(allweps[a]).find(".weapon-die").text();
+            var wepdie = $(allweps[a]).find(".die-value").text();
             var wep = { name: wepname, die: wepdie }
             weplist.push(wep)
         }
         $.each(weplist, function (index, wep) {
-            $(".weapon-list").append('<span><button class="btn btn-warning weapon-select" data-toggle="modal"  id="' + wepname + '">' + wep.name + '</button></span><span class="wepdies">' + wep.die + '</span>');
+            $(".weapon-list").append('<span><button class="btn btn-warning weapon-select" data-toggle="modal"  id="' + wep.name + '">' + wep.name + '</button></span><span class="wepdies">' + wep.die + '</span>');
             $(".weapon-list").fadeIn();
         });
     }
@@ -182,7 +182,7 @@ $(document).ready(function () {
         $(".attack-action").attr("disabled", false);
         $(".weapon-select").attr("disabled", false);
         $("#targets").empty();
-        
+
         getTargets()
 
         $.each(targets, function (index, value) {
@@ -191,18 +191,23 @@ $(document).ready(function () {
 
         $(".weapon-list").empty();
         getWeapons(currentcard);
-        console.log(weplist);
 
         $(".weapon-select").click(function () {
             $(".weapon-select").attr("disabled", true);
             selectedwep = this.id;
-            var attackdies = $(".wepdies").text()
-            console.log(attackdies)
+            var wepllistlen = weplist.length;
+            for (c = 0; c < wepllistlen; c++) {
+                if (weplist[c].name == selectedwep) {
+                    console.log(weplist[c].die);
+                } else {
+                    //pass
+                }
+            }
             return selectedwep;
         })
 
         $(".attack-action").click(function () {
-            
+
             slot = this.id;
             attacked = targets[slot]
             console.log(attacked)
@@ -228,7 +233,7 @@ $(document).ready(function () {
 
 
             $("#attack-body").html("<h3>" + name + " attacks " + attacked + "</h3>");
-            $("#testdata").html("<span>" + name + " Uses " + selectedwep + "</span>");     
+            $("#testdata").html("<span>" + name + " Uses " + selectedwep + "</span>");
 
 
             $("#attack-confirm").click(function () {
