@@ -1,0 +1,55 @@
+{% extends 'base.html' %} {% block page_title %} Equipment Home {% endblock %} {% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="jumbotron text-center">
+            <h1 class="slabo-text">Equipment</h1>
+            <hr class="bar-thin">
+            </hr>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-6">
+        <h3 class="item-title">Weapons</h3>
+        <ul>
+            {% for w in weapons %}
+            <li>{{ w.name }} - <span>{% for d in w.die.all %} {{ d.number_of_die }}{{ d.die }} {% endfor %}</span></li>
+            {% endfor %}
+        </ul>
+        <div class="row text-center">
+            <div class="col-12">
+                <a href="#" role="button" class="btn btn-warning" id="add-weapon"
+                    aria-disabled="false">Add Weapon</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="col-6">
+        <h3 class="item-title">Items:</h3>
+        <!--      {% for i in items %}
+        <div class="col-4">
+            <p>{{ w.name }} {% for d in w.die.all %} {{ d.number_of_die }}{{ d.die }} {% endfor %}</p>
+            <br>
+        </div>
+        {% endfor %} -->
+    </div>
+</div>
+
+{% endblock %}
