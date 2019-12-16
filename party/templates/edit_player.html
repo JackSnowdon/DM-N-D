@@ -33,6 +33,10 @@
                     {{ hero_form.charisma|as_crispy_field }}
                 </div>
             </div>
+
+            <div class="form-group">
+                {{ hero_form.weapons|as_crispy_field }}
+            </div>
             <input class="dsvr btn btn-success" id="submit_hero" name="commit" type="submit" value="Edit Hero">
         </form>
         <br>

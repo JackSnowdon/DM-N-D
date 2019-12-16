@@ -1,4 +1,5 @@
-{% extends 'base.html' %} {% load crispy_forms_tags %} {% load staticfiles %} {% block page_title %} Edit Stats {% endblock %} {% block content %}
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% load staticfiles %} {% block page_title %} Edit Stats
+{% endblock %} {% block content %}
 
 <div class="row text-center">
     <div class="col-12">
@@ -48,9 +49,20 @@
 </div>
 <div class="row">
     <div class="col-12 text-center">
+        <h3>Weapons:</h3>
+        {% for weapon in object.hero.weapons.all %}
+            {{ weapon.name }}
+                {% for d in weapon.die.all %}
+            {{ d.number_of_die }}{{ d.die }}
+            {% endfor %}
+        {% endfor %}
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 text-center">
         <a href="{% url 'combat_home' %}">
-        <img src="{% static 'imgs/return-arrow.png' %}" alt="Training" class="img-fluid img-button">
-    </a>
+            <img src="{% static 'imgs/return-arrow.png' %}" alt="Training" class="img-fluid img-button">
+        </a>
     </div>
 </div>
 
