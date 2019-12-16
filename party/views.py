@@ -61,6 +61,7 @@ def edit_player(request, pk):
             player = hero_form.save(commit=False)
             player.alignment = 'Player'
             player.save()
+            hero_form.save_m2m()
             messages.warning(request, 'Edited {0}'.format(player.name), extra_tags='alert boldest')
             return redirect('members')
     else:
@@ -75,6 +76,7 @@ def edit_monster(request, pk):
             monster = monster_form.save(commit=False)
             monster.alignment = 'NPC'
             monster.save()
+            monster_form.save_m2m()
             messages.warning(request, 'Edited {0}'.format(monster.name), extra_tags='alert boldest')
             return redirect('monsters')
     else:

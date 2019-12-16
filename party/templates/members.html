@@ -3,7 +3,8 @@
     <div class="col-12">
         <div class="jumbotron text-center">
             <h1 class="slabo-text">Party</h1>
-            <hr class="bar-thin"></hr>
+            <hr class="bar-thin">
+            </hr>
             <a href="{% url 'add_player' %}" role="button" class="btn btn-warning" aria-disabled="false">Add Player</a>
         </div>
     </div>
@@ -16,6 +17,35 @@
             <div class="card-body">
                 <h3 class="card-title boldest">{{ p.name }}</h3>
                 <p class="card-text"><span class="boldest">Max HP: </span>{{ p.max_hp }}</p>
+                <div class="row">
+                    <div class="col-md-4">
+                        <p><span class="boldest">Str</span></br><span class="str-stat">{{ p.strengh }}</span></p>
+                    </div>
+                    <div class="col-md-4">
+                        <p><span class="boldest">Dex</span></br><span class="dex-stat">{{ p.dex }}</span></p>
+                    </div>
+                    <div class="col-md-4">
+                        <p><span class="boldest">Int</span></br><span class="int-stat">{{ p.intel }}</span></p>
+                    </div>
+                    <div class="col-md-4">
+                        <p><span class="boldest">Wis</span></br><span class="wis-stat">{{ p.wisdom }}</span></p>
+                    </div>
+                    <div class="col-md-4">
+                        <p><span class="boldest">Con</span></br><span class="con-stat">{{ p.con }}</span></p>
+                    </div>
+                    <div class="col-md-4">
+                        <p><span class="boldest">Cha</span></br><span class="cha-stat">{{ p.charisma }}</span></p>
+                    </div>
+                    <hr class="card-break">
+                    <div class="col-12">
+                        <div class="party-weapon-row">
+                            {% for weapon in p.weapons.all %}
+                            <h5 class="weapon-name">{{ weapon.name }} - {% for d in weapon.die.all %}
+                                {{ d.number_of_die }}{{ d.die }}{% endfor %}</h5>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="card-footer">
                 <div class="row">
@@ -24,20 +54,22 @@
                             {% csrf_token %}
                             <div class="input-group">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-warning" type="submit" onclick="return confirm('Are you sure you to delete {{ p.name }}');">Delete</button>
+                                    <button class="btn btn-warning" type="submit"
+                                        onclick="return confirm('Are you sure you to delete {{ p.name }}');">Delete</button>
                                 </span>
                             </div>
                         </form>
                     </div>
                     <div class="col-6">
-                        <a href="{% url 'edit_player' p.id  %}" role="button" class="btn btn-warning" aria-disabled="false">Edit Hero</a>
+                        <a href="{% url 'edit_player' p.id  %}" role="button" class="btn btn-warning"
+                            aria-disabled="false">Edit Hero</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     {% endfor %}
-    <br> 
+    <br>
 </div>
 <br>
-    {% endblock %}
+{% endblock %}

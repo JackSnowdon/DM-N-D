@@ -22,7 +22,7 @@ class Base(models.Model):
     wisdom = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(30)])
     con = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(30)])
     charisma = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(30)])
-    weapons = models.ManyToManyField(Weapon)
+    weapons = models.ManyToManyField(Weapon, blank=True)
     
     
     def __str__(self):

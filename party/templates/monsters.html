@@ -16,6 +16,35 @@
             <div class="card-body">
                 <h3 class="card-title bolest">{{ m.name }}</h3>
                 <p class="card-text"><span class="boldest">Max HP: </span>{{ m.max_hp }}</p>
+                <div class="row">
+                    <div class="col-md-4">
+                        <p><span class="boldest">Str</span></br><span class="str-stat">{{ m.strengh }}</span></p>
+                    </div>
+                    <div class="col-md-4">
+                        <p><span class="boldest">Dex</span></br><span class="dex-stat">{{ m.dex }}</span></p>
+                    </div>
+                    <div class="col-md-4">
+                        <p><span class="boldest">Int</span></br><span class="int-stat">{{ m.intel }}</span></p>
+                    </div>
+                    <div class="col-md-4">
+                        <p><span class="boldest">Wis</span></br><span class="wis-stat">{{ m.wisdom }}</span></p>
+                    </div>
+                    <div class="col-md-4">
+                        <p><span class="boldest">Con</span></br><span class="con-stat">{{ m.con }}</span></p>
+                    </div>
+                    <div class="col-md-4">
+                        <p><span class="boldest">Cha</span></br><span class="cha-stat">{{ m.charisma }}</span></p>
+                    </div>
+                    <hr class="card-break">
+                    <div class="col-12">
+                        <div class="party-weapon-row">
+                            {% for weapon in m.weapons.all %}
+                            <h5 class="weapon-name">{{ weapon.name }} - {% for m in weapon.die.all %}
+                                {{ m.number_of_die }}{{ m.die }}{% endfor %}</h5>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="card-footer">
                 <div class="row">
