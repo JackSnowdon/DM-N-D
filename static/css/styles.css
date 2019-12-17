@@ -54,17 +54,26 @@
 
 /* Party/Monsters */
 
+
 .party-weapon-row {
     text-align: center;
 }
 
+
 /* Equipment */
+
 
 .item-title {
     text-align: center;
 }
 
+.box-button {
+    padding: 1rem;
+}
+
+
 /* Buttons */
+
 
 .btn-warning {
     transition: all 0.5s ease-in-out;
@@ -80,6 +89,7 @@
 
 
 /* Combat */
+
 
 .combat-box {
     width: 100%;
@@ -146,6 +156,7 @@
     list-style-type: none;
 }
 
+
 /* Breaks */
 
 
@@ -165,6 +176,7 @@
 
 
 /* Form Helpers */
+
 
 .form-50 {
     width: 50%;
