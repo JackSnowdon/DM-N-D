@@ -34,7 +34,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'profile' %}">Profile</a>
                 </li>
-                {% if user.profile.player_type == "DM" %}}
+                {% if user.profile.player_type == "DM" %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'monsters' %}">Monsters<span class="sr-only"></span></a>
                 </li>{% else %}{% endif %}
