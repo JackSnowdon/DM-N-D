@@ -51,6 +51,11 @@ def registration(request):
                                      password=request.POST['password1'])
                                 
             if user:
+                if request.POST["dm"]:
+                    user.profile.player_type = "DM"
+                else: 
+                    pass
+                
                 auth.login(user=user, request=request)
                 messages.success(request, "You have successfully registered")
                 return redirect(reverse('index'))

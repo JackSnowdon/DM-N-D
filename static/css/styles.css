@@ -17,6 +17,7 @@
     font-family: 'Exo', sans-serif;
 }
 
+.link-helper,
 .nav-bg a {
     color: #f4f4f4;
     transition: all 0.35s ease-in-out;
@@ -25,6 +26,7 @@
     -o-transition: all 0.35s ease-in-out;
 }
 
+.link-helper:hover ,
 .nav-bg a:hover {
     color: #A73B51
 }

@@ -2,13 +2,13 @@
 
 
 {% block content %}
-<p>If you haven't registered an account, you can sign do so here <a href="{% url 'registration' %}">Here!</a></p>
+<p>If you haven't registered an account, you can sign do so here <a class="link-helper" href="{% url 'registration' %}">Here!</a></p>
  
     <form class="form-helper" method="POST">
         {% csrf_token %} {{ login_form|crispy }}
         <button type="submit" class="btn btn-success cart-add">Login</button>
     </form>
 
-<a class="roster-link"href="{% url 'password_reset' %}">Reset Password</a>
+<a class="link-helper" href="{% url 'password_reset' %}">Reset Password</a>
 
 {% endblock %}

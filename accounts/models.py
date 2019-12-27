@@ -10,11 +10,21 @@ from django.dispatch import receiver
 
 """
 Upon User creation, Profile model is added and connected to a single user
+
 """
+
+Adventurer = 'Adventurer'
+DM = 'DM'
+
+DMA_CHOICES = (
+    (Adventurer, 'Adventurer'),
+    (DM, 'DM')
+)
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-
+    player_type = models.CharField(max_length=20, choices=DMA_CHOICES, default=Adventurer)
+    
     def __str__(self):
         return "{0}".format(self.user)
 
