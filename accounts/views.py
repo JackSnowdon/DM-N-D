@@ -54,7 +54,7 @@ def registration(request):
                 if request.POST["dm"]:
                     user.profile.player_type = "DM"
                 else: 
-                    pass
+                    user.profile.player_type = "Adventurer"
 
                 auth.login(user=user, request=request)
                 messages.success(request, "You have successfully registered")

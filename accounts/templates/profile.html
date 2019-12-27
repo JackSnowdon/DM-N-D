@@ -3,13 +3,19 @@
 <h3>Username: {{ user.profile }}</h3>
 <p>Your Email: {{ user.email }} </p>
 
+<div class="row">
+    <div class="col-12 text-center">
 
-<h3>Characters: </h3>
-{% for c in characters %}
-<h4>{{ c.name }}</h4>
-<a href="{% url 'edit_player' c.id  %}" role="button" class="btn btn-warning" aria-disabled="false">Edit Hero</a>
-{% endfor %}
-<br>
+        <h3>Characters: </h3>
+        {% for c in characters %}
+        <h4>{{ c.name }}</h4>
+        <a href="{% url 'edit_player' c.id  %}" role="button" class="btn btn-warning" aria-disabled="false">Edit
+            Hero</a>
+        <br>
+        {% endfor %}
+
+    </div>
+</div>
 
 <a class="roster-link" href="{% url 'password_reset' %}">Reset Password</a>
 
