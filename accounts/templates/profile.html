@@ -1,0 +1,12 @@
+{% extends 'base.html' %} {% block page_title %}{{ user }}'s Profile{% endblock %} {% block content %}
+
+<h3>Username: {{ user.profile }}</h3>
+<p>Your Email: {{ user.email }} </p>
+
+
+<h3>User Admin: </h3>
+
+<a class="roster-link"href="{% url 'password_reset' %}">Reset Password</a>
+
+{% endblock %}
+

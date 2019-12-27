@@ -31,7 +31,7 @@ else:
     if os.path.exists('env.py'):
         import env
     ALLOWED_HOSTS = []
-    SECRET_KEY = ["suzd_)whpd5*+lf5h$5+b#jws+28nscr&zq!8u*ws!&uo8^8x8="]
+    SECRET_KEY = os.environ.get('SECRET_KEY')
     DEBUG = True
     DATABASES = {
     'default': {
@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts',
     'home',
     'combat',
     'equipment',
