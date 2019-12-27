@@ -6,7 +6,7 @@ class PlayerForm(forms.ModelForm):
 
     class Meta:
         model = Base
-        exclude = ['alignment']
+        exclude = ['alignment', 'owner']
         labels = {
             "max_hp": "Max HP",
             "dex": "Dexterity",

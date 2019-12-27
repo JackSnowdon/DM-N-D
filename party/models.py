@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator 
 from equipment.models import *
+from accounts.models import *
 
 # Create your models here.
 
@@ -23,6 +24,7 @@ class Base(models.Model):
     con = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(30)])
     charisma = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(30)])
     weapons = models.ManyToManyField(Weapon, blank=True)
+    owner = models.ForeignKey(Profile, related_name='characters', on_delete=models.PROTECT)
     
     
     def __str__(self):

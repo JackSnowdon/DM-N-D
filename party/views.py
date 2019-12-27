@@ -16,6 +16,7 @@ def add_player(request):
         if player_form.is_valid():
             player = player_form.save(commit=False)
             player.alignment = 'Player'
+            player.owner = request.user.profile
             player.save()
             messages.error(request, 'Added {0}'.format(player.name), extra_tags='alert boldest')
             return redirect('members')

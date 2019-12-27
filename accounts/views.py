@@ -55,7 +55,7 @@ def registration(request):
                     user.profile.player_type = "DM"
                 else: 
                     pass
-                
+
                 auth.login(user=user, request=request)
                 messages.success(request, "You have successfully registered")
                 return redirect(reverse('index'))
@@ -72,5 +72,6 @@ def registration(request):
 def user_profile(request):
     """ Display user profile """
     user = User.objects.get(email=request.user.email)
-    
-    return render(request, 'profile.html', {"user": user})
+    characters = user.profile.characters.all()
+
+    return render(request, 'profile.html', {"user": user, "characters": characters})
