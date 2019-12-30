@@ -14,18 +14,46 @@
         <h3 class="item-title">Weapons</h3>
         <ul>
             {% for w in weapons %}
-            <li>{{ w.name }} - <span>{% for d in w.die.all %} {{ d.number_of_die }}{{ d.die }} {% endfor %}</span>
-                <span class="equip-icon-row">
-                    <a href="#">
-                        <img src="{% static 'imgs/anvil-impact.png' %}" alt="Edit Weapon" class="img-fluid wep-icon">
-                    </a>
-                    <a href="#">
-                        <img src="{% static 'imgs/trash-can.png' %}" alt="Delete Weapon" class="img-fluid wep-icon">
-                    </a>
-                </span>
+            <li class="weapon-armony-list"><a href="#" data-toggle="modal" data-target="#{{ w.name|cut:' ' }}Model">{{ w.name }} -
+                    <span>{% for d in w.die.all %}
+                        {{ d.number_of_die }}{{ d.die }} {% endfor %}</span></a>
             </li>
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="{{ w.name|cut:' ' }}Model" tabindex="-1" role="dialog" aria-labelledby="weaponModel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">{{ w.name }}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <a class="weapon-model-item" href="#">
+                                <span>Edit Weapon</span>
+                                <img src="{% static 'imgs/anvil-impact.png' %}" alt="Edit Weapon" class="img-fluid wep-icon">
+                            </a>
+                            <a href="#">
+                                <span>Delete Weapon</span>
+                                <img src="{% static 'imgs/trash-can.png' %}" alt="Delete Weapon" class="img-fluid wep-icon">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             {% endfor %}
         </ul>
+
+
+
+
+
+
         <div class="row text-center">
             <div class="col-12">
                 <a href="{% url 'add_weapon' %}" role="button" class="btn btn-warning" id="add-weapon"
@@ -60,5 +88,8 @@
         {% endfor %} -->
     </div>
 </div>
+
+
+
 
 {% endblock %}

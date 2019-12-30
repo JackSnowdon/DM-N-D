@@ -170,22 +170,31 @@
 /* Equpiment */
 
 
-.wep-icon {
-    height: 25px;
-    width: 25px;
-    border-radius: 3px;
-    transition: all 0.35s ease-in-out;
-    -moz-transition: all 0.35s ease-in-out;
-    -webkit-transition: all 0.35s ease-in-out;
-    -o-transition: all 0.35s ease-in-out;
-}
-
 .wep-icon:hover {
     background-color: #3b3916;
 }
 
-.equip-icon-row {
-    float: right;
+.weapon-armony-list a {
+    color: #ebd8cd
+}
+
+.modal-content {
+    color: #311F18;
+}
+
+.wep-icon {
+    height: 60px;
+    width: 60px;
+    border-radius: 3px;
+    
+}
+
+.wep-icon,
+.weapon-model-item {
+    transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    -webkit-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out;
 }
 
 
