@@ -7,7 +7,7 @@
         <br>
         <form role="form" method="post" id="add-weapon-form" class="form-50" action="{% url 'add_weapon' %}">
             {% csrf_token %}
-            {{ wepaon_form|crispy }}
+            {{ weapon_form|crispy }}
 
             <input class="btn btn-success" id="submit_combatant" name="commit" type="submit" value="Add Weapon">
         </form>

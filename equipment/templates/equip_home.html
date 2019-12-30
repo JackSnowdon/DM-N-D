@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block page_title %} Equipment Home {% endblock %} {% block content %}
+{% extends 'base.html' %} {% load static %} {% block page_title %} Equipment Home {% endblock %} {% block content %}
 <div class="row">
     <div class="col-12">
         <div class="jumbotron text-center">
@@ -14,7 +14,16 @@
         <h3 class="item-title">Weapons</h3>
         <ul>
             {% for w in weapons %}
-            <li>{{ w.name }} - <span>{% for d in w.die.all %} {{ d.number_of_die }}{{ d.die }} {% endfor %}</span></li>
+            <li>{{ w.name }} - <span>{% for d in w.die.all %} {{ d.number_of_die }}{{ d.die }} {% endfor %}</span>
+                <span class="equip-icon-row">
+                    <a href="#">
+                        <img src="{% static 'imgs/anvil-impact.png' %}" alt="Edit Weapon" class="img-fluid wep-icon">
+                    </a>
+                    <a href="#">
+                        <img src="{% static 'imgs/trash-can.png' %}" alt="Delete Weapon" class="img-fluid wep-icon">
+                    </a>
+                </span>
+            </li>
             {% endfor %}
         </ul>
         <div class="row text-center">

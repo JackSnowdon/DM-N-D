@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
+from django.contrib import messages
 from .models import Weapon
 from .forms import *
 
@@ -10,11 +11,18 @@ def equipment_home(request):
 
 def add_weapon(request):
     if request.method == "POST":
-        wepaon_form = AddWeapon(request.POST)
-        if wepaon_form.is_valid():
+        weapon_form = AddWeapon(request.POST)
+        if weapon_form.is_valid():
+
+            
+            """ 
+            Below messages not passing
+            messages.error(request, 'Added {0}'.format(weapon_form.name), extra_tags='alert boldest')
+            """
+
+
             weapon_form.save()
-            messages.error(request, 'Added {0}'.format(wepaon_form.name), extra_tags='alert boldest')
-            return redirect('equipment_home')
+            return redirect(reverse('equipment_home'))
     else:
-        wepaon_form = AddWeapon()
-    return render(request, 'add_weapon.html', {'wepaon_form': wepaon_form})
+        weapon_form = AddWeapon()
+    return render(request, 'add_weapon.html', {'weapon_form': weapon_form})
