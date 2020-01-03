@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from .models import Weapon
 from .forms import *
@@ -26,3 +26,27 @@ def add_weapon(request):
     else:
         weapon_form = AddWeapon()
     return render(request, 'add_weapon.html', {'weapon_form': weapon_form})
+
+
+def edit_weapon(request, pk):
+    current_weapon = get_object_or_404(Weapon, pk=pk)
+    if request.method == "POST":
+        weapon_form = AddWeapon(request.POST, instance=current_weapon)
+        if weapon_form.is_valid():
+            weapon_form.save()
+            """
+            MEssages also not working, no name!?
+            messages.warning(request, 'Edited {0}'.format(weapon_form.name), extra_tags='alert boldest')
+            """
+            return redirect('equipment_home')
+
+    else:
+        weapon_form = AddWeapon(instance=current_weapon)
+    return render(request, 'edit_weapon.html', {'weapon_form': weapon_form, 'current_weapon': current_weapon})
+
+
+def delete_weapon(request, pk):
+    instance = Weapon.objects.get(id=pk)
+    messages.warning(request, 'Deleted {0}'.format(instance.name), extra_tags='alert boldest')
+    instance.delete()
+    return redirect(reverse('equipment_home'))

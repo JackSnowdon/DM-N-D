@@ -14,32 +14,37 @@
         <h3 class="item-title">Weapons</h3>
         <ul>
             {% for w in weapons %}
-            <li class="weapon-armony-list"><a href="#" data-toggle="modal" data-target="#{{ w.name|cut:' ' }}Model">{{ w.name }} -
+            <li class="weapon-armony-list"><a href="#" data-toggle="modal"
+                    data-target="#{{ w.name|cut:' ' }}Model">{{ w.name }} -
                     <span>{% for d in w.die.all %}
                         {{ d.number_of_die }}{{ d.die }} {% endfor %}</span></a>
             </li>
 
 
             <!-- Modal -->
-            <div class="modal fade" id="{{ w.name|cut:' ' }}Model" tabindex="-1" role="dialog" aria-labelledby="weaponModel"
-                aria-hidden="true">
+            <div class="modal fade" id="{{ w.name|cut:' ' }}Model" tabindex="-1" role="dialog"
+                aria-labelledby="weaponModel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                            <div class="modal-header">
+                        <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">{{ w.name }}</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <a class="weapon-model-item" href="#">
-                                <span>Edit Weapon</span>
-                                <img src="{% static 'imgs/anvil-impact.png' %}" alt="Edit Weapon" class="img-fluid wep-icon">
-                            </a>
-                            <a href="#">
-                                <span>Delete Weapon</span>
-                                <img src="{% static 'imgs/trash-can.png' %}" alt="Delete Weapon" class="img-fluid wep-icon">
-                            </a>
+                            <span class="weapon-model-item">
+                                <a href="{% url 'edit_weapon' w.id  %}">
+                                    Edit Weapon
+                                    <!-- <img src="{% static 'imgs/anvil-impact.png' %}" alt="Edit Weapon" class="img-fluid wep-icon"> -->
+                                </a>
+                            </span>
+                            <span class="weapon-model-item">
+                                <a href="{% url 'delete_weapon' w.id  %}">
+                                    Delete Weapon
+                                    <!-- <img src="{% static 'imgs/trash-can.png' %}" alt="Delete Weapon" class="img-fluid wep-icon"> -->
+                                </a>
+                            </span>
                         </div>
                     </div>
                 </div>

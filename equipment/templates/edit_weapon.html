@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% load staticfiles %} {% block page_title %} Edit Weapon
+{% endblock %} {% block content %}
+
+<div class="row">
+    <div class="col-12 text-center">
+        <h2>Edit Weapon</h2>
+        <br>
+        <form role="form" method="post" id="edit-weapon-form" class="form-50">
+            {% csrf_token %}
+            {{ weapon_form|crispy }}
+
+            <input class="btn btn-success" id="edit-weapon" name="commit" type="submit" value="Edit Weapon">
+        </form>
+        <div class="row">
+            <div class="col-12 text-center">
+                <br>
+                <a href="{% url 'equipment_home' %}">
+                    <img src="{% static 'imgs/return-arrow.png' %}" alt="Training" class="img-fluid img-button">
+                </a>
+                <br>
+            </div>
+        </div>
+    </div>
+    <br> {% endblock %}
