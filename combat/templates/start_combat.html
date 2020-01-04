@@ -30,14 +30,27 @@
                 <h3 class="card-title boldest player-party">{{ p.hero.name }}</h3>
                 {% else %}
                 <h3 class="card-title boldest npc-party">{{ p.hero.name }}</h3>
-                {% endif %} {% if p.current_hp > p.hero.max_hp %}
+                {% endif %}
+                <h5 class="card-small-text">Level {{ p.hero.level }}</h5> 
+                {% if p.current_hp > p.hero.max_hp %}
                 <p><span class="boldest">HP:</span> <span id="card-hp" class="hp-meter">{{ p.hero.max_hp }}</span>/<span
                         id="card-max-hp">{{ p.hero.max_hp }}</span></p>
                 {% else %}
                 <p><span class="boldest">HP:</span> <span id="card-hp" class="hp-meter">{{ p.current_hp }}</span>/<span
                         id="card-max-hp">{{ p.hero.max_hp }}</span></p>
                 {% endif %}
-                <p class="card-text"><span class="boldest">Init:</span> {{ p.initiative }}</p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <p><span class="boldest">Armor</span></br><span class="armor-stat">{{ p.hero.armor }}</span></p>
+                </div>
+                <div class="col-md-4">
+                    <p><span class="boldest">Speed</span></br><span class="speed-stat">{{ p.hero.speed }}</span></p>
+                </div>
+                <div class="col-md-4">
+                    <p><span class="boldest">Initiative</span></br><span class="int-stat">{{ p.initiative }}</span></p>
+                </div>
             </div>
             <div class="card-footer">
                 <div class="row text-center">
@@ -48,13 +61,13 @@
                         <p><span class="boldest">Dex</span></br><span class="dex-stat">{{ p.hero.dex }}</span></p>
                     </div>
                     <div class="col-md-4">
+                        <p><span class="boldest">Con</span></br><span class="con-stat">{{ p.hero.con }}</span></p>
+                    </div>
+                    <div class="col-md-4">
                         <p><span class="boldest">Int</span></br><span class="int-stat">{{ p.hero.intel }}</span></p>
                     </div>
                     <div class="col-md-4">
                         <p><span class="boldest">Wis</span></br><span class="wis-stat">{{ p.hero.wisdom }}</span></p>
-                    </div>
-                    <div class="col-md-4">
-                        <p><span class="boldest">Con</span></br><span class="con-stat">{{ p.hero.con }}</span></p>
                     </div>
                     <div class="col-md-4">
                         <p><span class="boldest">Cha</span></br><span class="cha-stat">{{ p.hero.charisma }}</span></p>
