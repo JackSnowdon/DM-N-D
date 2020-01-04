@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% load staticfiles %} {% block page_title %} Add Die
+{% endblock %} {% block content %}
+
+<div class="row">
+    <div class="col-12 text-center">
+        <h2>New Die</h2>
+        <br>
+        <form role="form" method="post" id="add-die-form" class="form-50" action="{% url 'add_die' %}">
+            {% csrf_token %}
+            {{ die_form|crispy }}
+
+            <input class="btn btn-success" id="submit_combatant" name="commit" type="submit" value="Add Die">
+        </form>
+        <div class="box-button">
+            <div class="col-12 text-center">
+                <a href="{% url 'add_weapon' %}">
+                    <p>Back To Add Weapon
+                    <img src="{% static 'imgs/return-arrow.png' %}" alt="Training" class="img-fluid img-button"></p>
+                </a>
+                <a href="{% url 'equipment_home' %}">
+                    <p>Back To Equpiment Home
+                    <img src="{% static 'imgs/return-arrow.png' %}" alt="Training" class="img-fluid img-button"></p>
+                </a>
+            </div>
+        </div>
+        
+    </div>
+</div>
+<br> {% endblock %}

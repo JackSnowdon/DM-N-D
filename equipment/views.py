@@ -50,3 +50,26 @@ def delete_weapon(request, pk):
     messages.warning(request, 'Deleted {0}'.format(instance.name), extra_tags='alert boldest')
     instance.delete()
     return redirect(reverse('equipment_home'))
+
+
+def add_die(request):
+    if request.method == "POST":
+        die_form = DieForm(request.POST)
+        if die_form.is_valid():
+
+            #print(die_form)
+            #die_value = request.POST.number_of_die + request.POST.die
+            #print(die_value)
+
+            
+            
+            
+            # messages.error(request, 'Added {0}{1}'.format(die_form.number_of_die, die_form.die), extra_tags='alert boldest')
+            
+
+
+            die_form.save()
+            return redirect(reverse('add_weapon'))
+    else:
+        die_form = DieForm()
+    return render(request, 'add_die.html', {'die_form': die_form})

@@ -77,9 +77,23 @@
     background-color: #3b3916;
 }
 
+.box-button a,
 .weapon-armony-list a {
     color: #ebd8cd
 }
+
+.box-button a {
+    text-decoration: none;
+    transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    -webkit-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out;
+}
+
+.box-button a:hover {
+    color: #ffffff
+}
+
 
 .modal,
 .modal a {

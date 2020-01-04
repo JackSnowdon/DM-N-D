@@ -27,7 +27,8 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">{{ w.name }}</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">{{ w.name }} - <span class="small">{% for d in w.die.all %}
+                                {{ d.number_of_die }}{{ d.die }} {% endfor %}</span></h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
