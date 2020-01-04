@@ -23,6 +23,10 @@ class Base(models.Model):
     wisdom = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(30)])
     con = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(30)])
     charisma = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(30)])
+    level = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(20)])
+    armor = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(30)])
+    speed = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(30)])
+    proficiency = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
     weapons = models.ManyToManyField(Weapon, blank=True)
     owner = models.ForeignKey(Profile, related_name='characters', on_delete=models.PROTECT)
     

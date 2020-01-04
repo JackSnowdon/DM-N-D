@@ -3,7 +3,8 @@
     <div class="col-12">
         <div class="jumbotron text-center">
             <h1 class="slabo-text">Monsters</h1>
-            <hr class="bar-thin"></hr>
+            <hr class="bar-thin">
+            </hr>
             <a href="{% url 'add_enemy' %}" role="button" class="btn btn-warning" aria-disabled="false">Add Monster</a>
         </div>
     </div>
@@ -16,7 +17,14 @@
             <div class="card-body">
                 <h3 class="card-title bolest">{{ m.name }}</h3>
                 <p class="card-text"><span class="boldest">Max HP: </span>{{ m.max_hp }}</p>
-                <p class="card-text"><span class="boldest">Made By: </span>{{ m.owner }}</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><span class="boldest">Armor Class</span></br><span class="dex-stat">{{ m.armor }}</span></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><span class="boldest">Speed</span></br><span class="str-stat">{{ m.speed }}</span></p>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md-4">
                         <p><span class="boldest">Str</span></br><span class="str-stat">{{ m.strengh }}</span></p>
@@ -25,16 +33,19 @@
                         <p><span class="boldest">Dex</span></br><span class="dex-stat">{{ m.dex }}</span></p>
                     </div>
                     <div class="col-md-4">
+                        <p><span class="boldest">Con</span></br><span class="con-stat">{{ m.con }}</span></p>
+                    </div>
+                    <div class="col-md-4">
                         <p><span class="boldest">Int</span></br><span class="int-stat">{{ m.intel }}</span></p>
                     </div>
                     <div class="col-md-4">
                         <p><span class="boldest">Wis</span></br><span class="wis-stat">{{ m.wisdom }}</span></p>
                     </div>
                     <div class="col-md-4">
-                        <p><span class="boldest">Con</span></br><span class="con-stat">{{ m.con }}</span></p>
-                    </div>
-                    <div class="col-md-4">
                         <p><span class="boldest">Cha</span></br><span class="cha-stat">{{ m.charisma }}</span></p>
+                    </div>
+                    <div class="col-12">
+                        <p class="text-center card-text"><span class="boldest">Made By: </span>{{ m.owner }}</p>
                     </div>
                     <hr class="card-break">
                     <div class="col-12">
@@ -54,13 +65,15 @@
                             {% csrf_token %}
                             <div class="input-group">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-warning" type="submit" onclick="return confirm('Are you sure you to delete {{ m.name }}');">Delete</button>
+                                    <button class="btn btn-warning" type="submit"
+                                        onclick="return confirm('Are you sure you to delete {{ m.name }}');">Delete</button>
                                 </span>
                             </div>
                         </form>
                     </div>
                     <div class="col-6">
-                        <a href="{% url 'edit_monster' m.id  %}" role="button" class="btn btn-warning" aria-disabled="false">Edit Monster</a>
+                        <a href="{% url 'edit_monster' m.id  %}" role="button" class="btn btn-warning"
+                            aria-disabled="false">Edit Monster</a>
                     </div>
                 </div>
             </div>

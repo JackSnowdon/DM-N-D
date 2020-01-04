@@ -6,11 +6,25 @@
         <form role="form" method="post" id="edit-hero">
             {% csrf_token %}
             <div class="form-row">
-                <div class="form-group col-md-6 mb-0">
+                <div class="form-group col-md-4 mb-0">
                     {{ hero_form.name|as_crispy_field }}
                 </div>
-                <div class="form-group col-md-6 mb-0">
+                <div class="form-group col-md-4 mb-0">
                     {{ hero_form.max_hp|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-4 mb-0">
+                    {{ hero_form.level|as_crispy_field }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4 mb-0">
+                    {{ hero_form.proficiency|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-4 mb-0">
+                    {{ hero_form.armor|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-4 mb-0">
+                    {{ hero_form.speed|as_crispy_field }}
                 </div>
             </div>
             <div class="form-row">

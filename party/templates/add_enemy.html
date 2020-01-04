@@ -1,4 +1,5 @@
-{% extends 'base.html' %} {% load crispy_forms_tags %} {% load staticfiles %} {% block page_title %} Add Enemy {% endblock %} {% block content %}
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% load staticfiles %} {% block page_title %} Add Enemy
+{% endblock %} {% block content %}
 
 <div class="row">
     <div class="col-12 text-center">
@@ -6,11 +7,25 @@
         <form role="form" method="post" id="add-player-form" action="{% url 'add_enemy' %}">
             {% csrf_token %}
             <div class="form-row">
-                <div class="form-group col-md-6 mb-0">
+                <div class="form-group col-md-4 mb-0">
                     {{ enemy_form.name|as_crispy_field }}
                 </div>
-                <div class="form-group col-md-6 mb-0">
+                <div class="form-group col-md-4 mb-0">
                     {{ enemy_form.max_hp|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-4 mb-0">
+                    {{ enemy_form.level|as_crispy_field }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4 mb-0">
+                    {{ enemy_form.proficiency|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-4 mb-0">
+                    {{ enemy_form.armor|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-4 mb-0">
+                    {{ enemy_form.speed|as_crispy_field }}
                 </div>
             </div>
             <div class="form-row">
@@ -21,13 +36,13 @@
                     {{ enemy_form.dex|as_crispy_field }}
                 </div>
                 <div class="form-group col-md-2 mb-0">
+                    {{ enemy_form.con|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-2 mb-0">
                     {{ enemy_form.intel|as_crispy_field }}
                 </div>
                 <div class="form-group col-md-2 mb-0">
                     {{ enemy_form.wisdom|as_crispy_field }}
-                </div>
-                <div class="form-group col-md-2 mb-0">
-                    {{ enemy_form.con|as_crispy_field }}
                 </div>
                 <div class="form-group col-md-2 mb-0">
                     {{ enemy_form.charisma|as_crispy_field }}
@@ -40,9 +55,9 @@
             <input class="btn btn-success" id="submit_enemy" name="commit" type="submit" value="Add Enemy">
         </form>
         <br>
-    <a href="{% url 'monsters' %}">
-        <img src="{% static 'imgs/return-arrow.png' %}" alt="Training" class="img-fluid img-button">
-    </a>
+        <a href="{% url 'monsters' %}">
+            <img src="{% static 'imgs/return-arrow.png' %}" alt="Training" class="img-fluid img-button">
+        </a>
     </div>
 </div>
 
