@@ -20,30 +20,30 @@
                 </h3>
                 <p class="card-text"><span class="boldest">Max HP: </span>{{ m.max_hp }}</p>
                 <div class="row">
-                    <div class="col-md-6">
-                        <p><span class="boldest">Armor Class</span></br><span class="dex-stat">{{ m.armor }}</span></p>
+                    <div class="col-6">
+                        <p><span class="boldest">AC</span></br><span class="dex-stat">{{ m.armor }}</span></p>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-6">
                         <p><span class="boldest">Speed</span></br><span class="str-stat">{{ m.speed }}</span></p>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-4">
                         <p><span class="boldest">Str</span></br><span class="str-stat">{{ m.strengh }}</span></p>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-4">
                         <p><span class="boldest">Dex</span></br><span class="dex-stat">{{ m.dex }}</span></p>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-4">
                         <p><span class="boldest">Con</span></br><span class="con-stat">{{ m.con }}</span></p>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-4">
                         <p><span class="boldest">Int</span></br><span class="int-stat">{{ m.intel }}</span></p>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-4">
                         <p><span class="boldest">Wis</span></br><span class="wis-stat">{{ m.wisdom }}</span></p>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-4">
                         <p><span class="boldest">Cha</span></br><span class="cha-stat">{{ m.charisma }}</span></p>
                     </div>
                     <div class="col-12">
@@ -53,8 +53,7 @@
                     <div class="col-12">
                         <div class="party-weapon-row">
                             {% for weapon in m.weapons.all %}
-                            <h5 class="weapon-name">{{ weapon.name }} - {% for m in weapon.die.all %}
-                                {{ m.number_of_die }}{{ m.die }}{% endfor %}</h5>
+                            <h5 class="weapon-name">{{ weapon.name }} - {% for m in weapon.die.all %} {{ m.number_of_die }}{{ m.die }}{% endfor %}</h5>
                             {% endfor %}
                         </div>
                     </div>
@@ -74,8 +73,7 @@
                         </form>
                     </div>
                     <div class="col-6">
-                        <a href="{% url 'edit_monster' m.id  %}" role="button" class="btn btn-warning"
-                            aria-disabled="false">Edit Monster</a>
+                        <a href="{% url 'edit_monster' m.id  %}" role="button" class="btn btn-warning" aria-disabled="false">Edit Monster</a>
                     </div>
                 </div>
             </div>
@@ -83,5 +81,4 @@
     </div>
     <br> {% endfor %}
 </div>
-<br>
-{% endblock %}
+<br> {% endblock %}

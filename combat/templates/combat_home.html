@@ -10,7 +10,8 @@
 </div>
 <div class="row text-center">
     <div class="col-12">
-        <a href="{% url 'add_hero' %}" role="button" class="btn btn-warning" id="add-hero" aria-disabled="false">Add Combatant</a>
+        <a href="{% url 'add_hero' %}" role="button" class="btn btn-warning" id="add-hero" aria-disabled="false">Add
+            Combatant</a>
     </div>
 </div>
 <br>
@@ -53,18 +54,91 @@
                 <div class="row">
                     <div class="col-12">
                         <a class="btn btn-warning" href="{% url 'single_member' pk=p.pk %}" role="button" aria-disabled="false">View Stats</a>
+
+                        <a class="btn btn-warning" href="#" data-toggle="modal" data-target="#{{ p.hero.name }}Model">Quick View</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="{{ p.hero.name }}Model" tabindex="-1" role="dialog" aria-labelledby="combatModel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center" id="exampleModalLabel">{{ p.hero.name }} {% if p.current_hp > p.hero.max_hp %}
+                        <span class="boldest">HP:</span> <span id="model-hp">{{ p.hero.max_hp }}</span>/<span id="model-max-hp">{{ p.hero.max_hp }}</span></h5>
+                    {% else %}
+                    <span class="boldest">HP:</span> <span id="model-hp">{{ p.current_hp }}</span>/<span id="model-max-hp">{{ p.hero.max_hp }}</span></h5>
+                    {% endif %}
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-4">
+                            <p><span class="boldest">Armor</span></br><span class="armor-stat">{{ p.hero.armor }}</span>
+                            </p>
+                        </div>
+                        <div class="col-4">
+                            <p><span class="boldest">Speed</span></br><span class="speed-stat">{{ p.hero.speed }}</span>
+                            </p>
+                        </div>
+                        <div class="col-4">
+                            <p><span class="boldest">Initiative</span></br><span class="int-stat">{{ p.initiative }}</span></p>
+                        </div>
+                    </div>
+
+                    <div class="row text-center">
+                        <div class="col-4">
+                            <p><span class="boldest">Str</span></br><span class="str-stat">{{ p.hero.strengh }}</span>
+                            </p>
+                        </div>
+                        <div class="col-4">
+                            <p><span class="boldest">Dex</span></br><span class="dex-stat">{{ p.hero.dex }}</span></p>
+                        </div>
+                        <div class="col-4">
+                            <p><span class="boldest">Con</span></br><span class="con-stat">{{ p.hero.con }}</span></p>
+                        </div>
+                        <div class="col-4">
+                            <p><span class="boldest">Int</span></br><span class="int-stat">{{ p.hero.intel }}</span></p>
+                        </div>
+                        <div class="col-4">
+                            <p><span class="boldest">Wis</span></br><span class="wis-stat">{{ p.hero.wisdom }}</span>
+                            </p>
+                        </div>
+                        <div class="col-4">
+                            <p><span class="boldest">Cha</span></br><span class="cha-stat">{{ p.hero.charisma }}</span>
+                            </p>
+                        </div>
+                        <br>
+                    </div>
+                    <div class="row-text-center">
+                        {% for weapon in p.hero.weapons.all %}
+                        <div class="single-weapon">
+                            <span class="weapon-name">{{ weapon.name }}</span>
+                            <div class="weapon-die">{% for d in weapon.die.all %}<span class="die-value">{{ d.number_of_die }}{{ d.die }} </span>{% endfor %}</div>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     {% endfor %}
 </div>
 
 <hr class="bar-thin">
 <div class="col-12">
     <div class="text-center">
-        <a href="{% url 'delete_all_from_combat' %}" role="button" class="btn btn-warning" id="delete-all-combat" aria-disabled="false" onclick="return confirm('Are you sure you to delete all combatants?');">Delete All From Combat</a>
+        <a href="{% url 'delete_all_from_combat' %}" role="button" class="btn btn-warning" id="delete-all-combat" aria-disabled="false" onclick="return confirm('Are you sure you to delete all combatants?');">Delete All
+            From Combat</a>
     </div>
 </div>
 <br>
@@ -72,7 +146,8 @@
 <br>
 <div class="col-12">
     <div class="text-center">
-        <a href="{% url 'start_combat' %}"><button id="start-combat" class="btn btn-warning" aria-disabled="false">Start Combat</button></a>
+        <a href="{% url 'start_combat' %}"><button id="start-combat" class="btn btn-warning" aria-disabled="false">Start
+                Combat</button></a>
     </div>
 </div>
 <br> {% endblock %}
