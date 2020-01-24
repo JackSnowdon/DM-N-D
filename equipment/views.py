@@ -7,7 +7,8 @@ from .forms import *
 
 def equipment_home(request):
     weapons = Weapon.objects.order_by('name')
-    return render(request, 'equip_home.html', {"weapons": weapons})
+    skills = Skill.objects.order_by('name')
+    return render(request, 'equip_home.html', {"weapons": weapons, "skills": skills})
 
 def add_weapon(request):
     if request.method == "POST":
@@ -62,14 +63,31 @@ def add_die(request):
             #print(die_value)
 
             
-            
-            
+
             # messages.error(request, 'Added {0}{1}'.format(die_form.number_of_die, die_form.die), extra_tags='alert boldest')
             
-
-
             die_form.save()
             return redirect(reverse('add_weapon'))
     else:
         die_form = DieForm()
     return render(request, 'add_die.html', {'die_form': die_form})
+
+
+
+def add_skill(request):
+    if request.method == "POST":
+        skill_form = SkillForm(request.POST)
+        if skill_form.is_valid():
+
+            
+            skill_form.save()
+            return redirect(reverse('equipment_home'))
+    else:
+        skill_form = SkillForm()
+    return render(request, 'add_skill.html', {'skill_form': skill_form})
+
+
+def die_pot(request):
+    weapons = Weapon.objects.order_by('name')
+    skills = Skill.objects.order_by('name')
+    return render(request, 'die_pot.html', {"weapons": weapons, "skills": skills})

@@ -14,16 +14,14 @@
         <h3 class="item-title">Weapons</h3>
         <ul>
             {% for w in weapons %}
-            <li class="weapon-armony-list"><a href="#" data-toggle="modal"
-                    data-target="#{{ w.name|cut:' ' }}Model">{{ w.name }} -
+            <li class="weapon-armony-list"><a href="#" data-toggle="modal" data-target="#{{ w.name|cut:' ' }}Model">{{ w.name }} -
                     <span>{% for d in w.die.all %}
                         {{ d.number_of_die }}{{ d.die }} {% endfor %}</span></a>
             </li>
 
 
             <!-- Modal -->
-            <div class="modal fade" id="{{ w.name|cut:' ' }}Model" tabindex="-1" role="dialog"
-                aria-labelledby="weaponModel" aria-hidden="true">
+            <div class="modal fade" id="{{ w.name|cut:' ' }}Model" tabindex="-1" role="dialog" aria-labelledby="weaponModel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -56,42 +54,36 @@
         </ul>
 
 
-
-
-
-
         <div class="row text-center">
             <div class="col-12">
-                <a href="{% url 'add_weapon' %}" role="button" class="btn btn-warning" id="add-weapon"
-                    aria-disabled="false">Add Weapon</a>
+                <a href="{% url 'add_weapon' %}" role="button" class="btn btn-warning mb-3" id="add-weapon" aria-disabled="false">Add Weapon</a>
             </div>
         </div>
+
+
     </div>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <div class="col-6">
-        <h3 class="item-title">Items:</h3>
-        <!--      {% for i in items %}
-        <div class="col-4">
-            <p>{{ w.name }} {% for d in w.die.all %} {{ d.number_of_die }}{{ d.die }} {% endfor %}</p>
-            <br>
+        <h3 class="item-title">Skills:</h3>
+        <li class="weapon-armony-list mb-4">
+            {% for s in skills %} {{ s.name }} {% for d in s.die.all %} {{ d.number_of_die }}{{ d.die }} {% endfor %} {% endfor %}
+        </li>
+
+        <div class="row text-center">
+            <div class="col-12">
+                <a href="{% url 'add_skill' %}" role="button" class="btn btn-warning" id="add-skill" aria-disabled="false">Add Skill</a>
+            </div>
         </div>
-        {% endfor %} -->
+
+    </div>
+
+    <div class="row text-center">
+        <div class="col-12">
+
+            <a href="{% url 'die_pot' %}" role="button" class="btn btn-warning" id="die-pot" aria-disabled="false">Die Pot</a>
+        </div>
     </div>
 </div>
 

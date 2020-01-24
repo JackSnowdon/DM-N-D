@@ -1,0 +1,32 @@
+{% extends 'base.html' %} {% load static %} {% block page_title %} Equipment Home {% endblock %} {% block content %}
+
+<div class="row">
+    <div class="col-12 text-center">
+        <h2>Die Pot!</h2>
+        <p>Roll your die so you don't have too... for some reason</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 col-12">
+        <h3 class="item-title">Weapons:</h3>
+        <ul>
+            {% for w in weapons %}
+            <li class="weapon-armony-list">{{ w.name }} -
+                <span>{% for d in w.die.all %}
+                        {{ d.number_of_die }}{{ d.die }} {% endfor %}</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="col-md-6 col-12">
+        <h3 class="item-title">Skills:</h3>
+        <ul>
+            <li class="weapon-armony-list mb-4">
+                {% for s in skills %} {{ s.name }} {% for d in s.die.all %} {{ d.number_of_die }}{{ d.die }} {% endfor %} {% endfor %}
+            </li>
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

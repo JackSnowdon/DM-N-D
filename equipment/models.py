@@ -19,18 +19,33 @@ DIE_CHOICES = (
     (D20, '20'),
 )
 
+Rogue = 'Rogue'
+
+CLASS_CHOICES = (
+    (Rogue, 'Rogue'),
+)
+
 class Die(models.Model):
     die = models.CharField(max_length=20, choices=DIE_CHOICES, default=D4)
     number_of_die = models.IntegerField()
 
     def __str__(self):
-        return '{0} x {1}'.format(self.die, self.number_of_die)
+        return '{1}{0}'.format(self.die, self.number_of_die)
 
 
 
 class Weapon(models.Model):
     name = models.CharField(max_length=50)
     die = models.ManyToManyField(Die)
+
+    def __str__(self):
+        return '{0}'.format(self.name)
+
+    
+class Skill(models.Model):
+    name = models.CharField(max_length=50)
+    die = models.ManyToManyField(Die)
+    classpick = models.CharField(max_length=20, choices=CLASS_CHOICES, default=Rogue)
 
     def __str__(self):
         return '{0}'.format(self.name)
